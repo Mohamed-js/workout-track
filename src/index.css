@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap);
+
 * {
   box-sizing: border-box;
 }
@@ -5,6 +7,7 @@
 body {
   margin: 0;
   background-color: #f3f4f6;
+  font-family: 'Balsamiq Sans', cursive;
 }
 
 a {
@@ -35,6 +38,8 @@ a {
   padding: 10px;
   background-color: #41b5e8;
   color: white;
+  position: sticky;
+  top: 0;
 }
 
 .bottombar {
@@ -96,6 +101,7 @@ a {
   flex-direction: row;
   align-items: center;
   background-color: white;
+  height: 100%;
 }
 
 .grid-item h4 {
@@ -122,6 +128,7 @@ a {
 
 .name-container p {
   margin: 0;
+  font-size: small;
   margin-top: 5px;
 }
 
@@ -135,4 +142,37 @@ a {
   height: 100%;
   object-fit: contain;
   object-position: top left;
+}
+
+.card-row {
+  height: 70px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  margin-bottom: 15px;
+}
+
+.card-row .row {
+  display: flex;
+}
+
+.card-row .img {
+  height: 60px;
+  width: 60px;
+  margin-right: 8px;
+}
+
+.card-row .img svg {
+  height: 60px;
+  width: 60px;
+  padding: 7px;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.full-width {
+  width: 100%;
 }

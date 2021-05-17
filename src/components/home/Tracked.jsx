@@ -19,7 +19,7 @@ const Tracked = () => {
               (x) => x.movement_count
             )[0];
             return (
-              <Link to={`/show/${movement.id}`} className="btn active">
+              <Link to={`/show/${movement.id}`} className="btn">
                 <div className="grid-item">
                   <div className="img-container">
                     <img src={movement.image} alt={movement.name} />

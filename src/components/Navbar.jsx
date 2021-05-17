@@ -10,7 +10,10 @@ const Navbar = ({ header = 'Workout Track', back }) => {
       <h4 className="header">{header}</h4>
       {back && (
         <h3 className="back">
-          <FontAwesomeIcon icon={faChevronLeft} onClick={() => history.back} />
+          <FontAwesomeIcon
+            icon={faChevronLeft}
+            onClick={() => history.goBack()}
+          />
         </h3>
       )}
     </div>

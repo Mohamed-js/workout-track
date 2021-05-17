@@ -15,7 +15,6 @@ const Home = () => {
 
   return (
     <div className="container">
-      <h5 className="hello">Your tracked workout...</h5>
       <Tracked />
     </div>
   );

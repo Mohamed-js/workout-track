@@ -20,7 +20,7 @@ const Bottombar = ({ header = 'Workout Track', back }) => {
         <FontAwesomeIcon icon={faChartLine} onClick={() => history.back} />
         <p>Movements</p>
       </div>
-      <div className="nav-item">
+      <div className={'nav-item '}>
         <FontAwesomeIcon icon={faChartPie} onClick={() => history.back} />
         <p>Your progress</p>
       </div>
