@@ -56,3 +56,19 @@ body {
 .back {
   padding-left: 10px;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.img-container {
+  max-height: 100px;
+}
+
+.img-container img {
+  max-width: 50%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+}

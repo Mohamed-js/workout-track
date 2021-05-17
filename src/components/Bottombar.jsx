@@ -25,7 +25,10 @@ const Bottombar = ({ header = 'Workout Track', back }) => {
         <p>Your progress</p>
       </div>
       <div className="nav-item">
-        <FontAwesomeIcon icon={faEllipsisH} onClick={() => history.back} />
+        <FontAwesomeIcon
+          icon={faEllipsisH}
+          onClick={() => sessionStorage.removeItem('current_user')}
+        />
         <p>More</p>
       </div>
     </h2>

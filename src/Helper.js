@@ -46,3 +46,16 @@ export const getMovements = async () => {
     });
   return respond;
 };
+
+export const newMovement = async (username, movement_id) => {
+  const respond = await fetch(
+    `https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/movements/new/${username}/${movement_id}`
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      return data;
+    });
+  return respond;
+};
