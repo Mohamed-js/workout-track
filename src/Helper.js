@@ -33,3 +33,16 @@ export const signin = async (credits) => {
     });
   return respond;
 };
+
+export const getMovements = async () => {
+  const respond = await fetch(
+    `https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/movements`
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      return data;
+    });
+  return respond;
+};

@@ -15,10 +15,12 @@ const Login = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setFailure('');
     const respond = await signin(credits);
     if (respond[0] === undefined)
       return setFailure('Sorry, you entered wrong credits!');
     setFailure('');
+    sessionStorage.setItem('current_user', JSON.stringify(respond[0]));
     history.push('/home');
   };
   return (
