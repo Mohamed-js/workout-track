@@ -6,7 +6,7 @@ const Landing = () => {
   const user = JSON.parse(sessionStorage.getItem('current_user'));
   if (user) history.push('/home');
   return (
-    <div className="sign">
+    <div className="sign container">
       <h1 className="welcome">WELCOME TO WORKOUT TRACK</h1>
       <Link to="/signup" className="sign-up">
         SIGN UP

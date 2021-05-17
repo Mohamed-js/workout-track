@@ -36,7 +36,8 @@ export const signin = async (credits) => {
 
 export const getMovements = async () => {
   const respond = await fetch(
-    `https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/movements`
+    `https://diagnoser-proxy.herokuapp.com/https://workout-track-api.herokuapp.com/api/v1/movements`,
+    { headers: { 'Content-Type': 'application/json' } }
   )
     .then((res) => {
       return res.json();

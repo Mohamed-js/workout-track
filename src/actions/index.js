@@ -11,7 +11,6 @@ export const fetchMovements = () => {
       })
       .then((data) => {
         dispatch({ type: 'STORE_MOVEMENTS', payload: data });
-        console.log('hay');
       });
   };
 };
