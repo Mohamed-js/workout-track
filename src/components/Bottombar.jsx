@@ -12,10 +12,22 @@ const Bottombar = ({ header = 'Workout Track', back }) => {
   const history = useHistory();
   return (
     <h2 className="flex-row bottombar">
-      <FontAwesomeIcon icon={faChartBar} onClick={() => history.back} />
-      <FontAwesomeIcon icon={faChartLine} onClick={() => history.back} />
-      <FontAwesomeIcon icon={faChartPie} onClick={() => history.back} />
-      <FontAwesomeIcon icon={faEllipsisH} onClick={() => history.back} />
+      <div className="nav-item">
+        <FontAwesomeIcon icon={faChartBar} onClick={() => history.back} />
+        <p>New count</p>
+      </div>
+      <div className="nav-item active">
+        <FontAwesomeIcon icon={faChartLine} onClick={() => history.back} />
+        <p>Movements</p>
+      </div>
+      <div className="nav-item">
+        <FontAwesomeIcon icon={faChartPie} onClick={() => history.back} />
+        <p>Your progress</p>
+      </div>
+      <div className="nav-item">
+        <FontAwesomeIcon icon={faEllipsisH} onClick={() => history.back} />
+        <p>More</p>
+      </div>
     </h2>
   );
 };
