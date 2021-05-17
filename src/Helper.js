@@ -49,6 +49,8 @@ export const getMovements = async () => {
 };
 
 export const newMovement = async (username, movement_id) => {
+  console.log(username);
+  console.log(movement_id);
   const respond = await fetch(
     `https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/movements/new/${username}/${movement_id}`
   )
