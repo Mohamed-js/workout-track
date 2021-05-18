@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react';
-import { fetchMovements, fetchUserMovements } from '../actions';
+import {
+  fetchUntrackedMovements,
+  fetchTrackedMovements,
+  fetchUserRecords,
+} from '../actions';
 import { useDispatch } from 'react-redux';
 import Tracked from '../components/home/Tracked';
 
@@ -8,10 +12,11 @@ const Home = () => {
   const user = JSON.parse(sessionStorage.getItem('current_user'));
 
   useEffect(() => {
-    dispatch(fetchMovements);
-    dispatch(fetchUserMovements(user.id));
+    dispatch(fetchUntrackedMovements);
+    dispatch(fetchTrackedMovements(user.id));
+    dispatch(fetchUserRecords(user.id));
     dispatch({ type: 'STORE_USER', payload: user });
-  }, []);
+  }, [dispatch, user]);
 
   return (
     <div className="container">

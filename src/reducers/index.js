@@ -3,7 +3,7 @@ import movementsReducer from './movementsReducer';
 import userReducer from './userReducer';
 
 const reducers = combineReducers({
-  movements: movementsReducer,
+  untrackedMovements: movementsReducer,
   user: userReducer,
 });
 

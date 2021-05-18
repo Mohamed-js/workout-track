@@ -23,7 +23,7 @@ function App() {
           <Route exact path="/home" component={Home} />
           <Route exact path="/new" component={Addmove} />
           <Route exact path="/show/:id" component={Showpage} />
-          <Route exact path="/new-record/:id" component={NewRecord} />
+          <Route exact path="/new-record" component={NewRecord} />
         </Switch>
 
         {loggedin && <Bottombar />}

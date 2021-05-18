@@ -1,7 +1,7 @@
-export const fetchMovements = (id) => {
+export const fetchUntrackedMovements = (id) => {
   return (dispatch) => {
     fetch(
-      `https://diagnoser-proxy.herokuapp.com/https://workout-track-api.herokuapp.com/api/v1/movements/${id}`,
+      `https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/user/${id}/untracked-movements`,
       {
         headers: { 'Content-Type': 'application/json' },
       }
@@ -15,10 +15,10 @@ export const fetchMovements = (id) => {
   };
 };
 
-export const fetchUserMovements = (id) => {
+export const fetchTrackedMovements = (id) => {
   return (dispatch) => {
     fetch(
-      `https://diagnoser-proxy.herokuapp.com/https://workout-track-api.herokuapp.com/api/v1/user/${id}/movements`,
+      `https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/user/${id}/tracked-movements`,
       {
         headers: { 'Content-Type': 'application/json' },
       }
@@ -28,6 +28,23 @@ export const fetchUserMovements = (id) => {
       })
       .then((data) => {
         dispatch({ type: 'STORE_USER_MOVEMENTS', payload: data });
+      });
+  };
+};
+
+export const fetchUserRecords = (id) => {
+  return (dispatch) => {
+    fetch(
+      `https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/user/${id}/records`,
+      {
+        headers: { 'Content-Type': 'application/json' },
+      }
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        dispatch({ type: 'STORE_USER_RECORDS', payload: data });
       });
   };
 };

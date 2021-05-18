@@ -34,10 +34,9 @@ export const signin = async (credits) => {
   return respond;
 };
 
-export const getMovements = async () => {
+export const newMovement = async (username, movement_id) => {
   const respond = await fetch(
-    `https://diagnoser-proxy.herokuapp.com/https://workout-track-api.herokuapp.com/api/v1/movements`,
-    { headers: { 'Content-Type': 'application/json' } }
+    `https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/movements/new/${username}/${movement_id}`
   )
     .then((res) => {
       return res.json();
@@ -48,11 +47,22 @@ export const getMovements = async () => {
   return respond;
 };
 
-export const newMovement = async (username, movement_id) => {
-  console.log(username);
-  console.log(movement_id);
+export const newRecord = async (username, movement_id, movement_count) => {
   const respond = await fetch(
-    `https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/movements/new/${username}/${movement_id}`
+    `https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/user/records/new/${username}/${movement_id}/${movement_count}`
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      return data;
+    });
+  return respond;
+};
+
+export const movementUserTopscore = async (user_id, movement_id) => {
+  const respond = await fetch(
+    `https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/user/${user_id}/${movement_id}/topscore`
   )
     .then((res) => {
       return res.json();

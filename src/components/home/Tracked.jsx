@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Tracked = () => {
-  const trackedMovements = useSelector((state) => state.user.movements);
-
+  const trackedMovements = useSelector((state) => state.user.trackedMovements);
+  const records = useSelector((state) => state.user.records);
+  let latest = 0;
   return (
     <div>
       <Link to="/new" className="btn active">
@@ -15,30 +16,31 @@ const Tracked = () => {
       <div className="grid">
         {trackedMovements &&
           trackedMovements.map((movement) => {
-            const top = movement.tracked_movements.sort(
-              (x) => x.movement_count
-            )[0];
+            if (records) {
+              latest = records.filter((x) => x.movement_id === movement.id)[0];
+            }
+
             return (
-              <Link to={`/show/${movement.id}`} className="btn">
+              <Link
+                key={movement.id}
+                to={`/show/${movement.id}`}
+                className="btn">
                 <div className="grid-item">
+                  {}
                   <div className="img-container">
                     <img src={movement.image} alt={movement.name} />
                   </div>
                   <div className="text-center name-container">
                     <h6>{movement.name.toUpperCase()}</h6>
                     <p>
-                      <span>{top.movement_count} </span>
-                      Times
+                      <span>{latest.movement_count} </span>
                     </p>
+                    <h6>latest</h6>
                   </div>
                 </div>
               </Link>
             );
           })}
-
-        {!trackedMovements && (
-          <h4 className="caution">Click on 'Track +' to track items.</h4>
-        )}
       </div>
     </div>
   );

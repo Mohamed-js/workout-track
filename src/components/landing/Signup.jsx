@@ -7,17 +7,25 @@ const SignUp = () => {
     password: '',
     birth_date: '',
   });
+  const [success, setSuccess] = useState();
 
   const handleChange = (e) => {
     setCredits({ ...credits, [e.target.name]: e.target.value });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    signup(credits);
+    const respond = await signup(credits);
+    setSuccess(respond.message);
   };
+
   return (
     <>
       <h1>SignUp</h1>
+      <br />
+      {success && <span className="alert-good">{success}</span>}
+      <br />
+      <br />
+      <br />
       <form onSubmit={handleSubmit} className="signup">
         <input
           onChange={handleChange}

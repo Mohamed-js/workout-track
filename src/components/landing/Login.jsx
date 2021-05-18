@@ -26,7 +26,11 @@ const Login = () => {
   return (
     <>
       <h1>Login</h1>
-      {failure && <span className="alert-wrong">{failure}</span>}
+      <br />
+      {failure && <span className="alert-bad">{failure}</span>}
+      <br />
+      <br />
+      <br />
       <form onSubmit={handleSubmit} className="signup">
         <input
           onChange={handleChange}

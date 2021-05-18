@@ -13,11 +13,17 @@ const Bottombar = ({ header = 'Workout Track', back }) => {
   return (
     <h2 className="flex-row bottombar">
       <div className="nav-item">
-        <FontAwesomeIcon icon={faChartBar} onClick={() => history.back} />
+        <FontAwesomeIcon
+          icon={faChartBar}
+          onClick={() => history.push('/new-record')}
+        />
         <p>New count</p>
       </div>
       <div className="nav-item active">
-        <FontAwesomeIcon icon={faChartLine} onClick={() => history.back} />
+        <FontAwesomeIcon
+          icon={faChartLine}
+          onClick={() => history.push('/home')}
+        />
         <p>Movements</p>
       </div>
       <div className={'nav-item '}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMovements } from '../../actions';
+import { fetchUntrackedMovements } from '../../actions';
 import { newMovement } from '../../Helper';
 
 const Addmove = () => {
@@ -9,7 +9,7 @@ const Addmove = () => {
   const { user } = useSelector((state) => state.user);
 
   useEffect(() => {
-    dispatch(fetchMovements(user.id));
+    dispatch(fetchUntrackedMovements(user.id));
   }, [dispatch, user.id]);
 
   const handleClick = (e) => {
@@ -17,10 +17,10 @@ const Addmove = () => {
     e.target.disabled = true;
     e.target.style.backgroundColor = '#4caf50';
     e.target.textContent = 'Subscribed';
-    dispatch(fetchMovements());
+    dispatch(fetchUntrackedMovements());
   };
 
-  const { movements } = useSelector((state) => state.movements);
+  const { movements } = useSelector((state) => state.untrackedMovements);
 
   return (
     <div className="grid">
