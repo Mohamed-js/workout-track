@@ -30,15 +30,17 @@ const Addmove = () => {
             <div className="img-container">
               <img src={movement.image} alt={movement.name} />
             </div>
-            <h4>{movement.name.toUpperCase()}</h4>
-            <button
-              type="button"
-              id={movement.id}
-              onClick={handleClick}
-              className="btn m-auto active"
-            >
-              Subscribe +
-            </button>
+            <div>
+              <h6 className="m-0 text-center">{movement.name.toUpperCase()}</h6>
+              <button
+                type="button"
+                id={movement.id}
+                onClick={handleClick}
+                className="btn m-auto active sub"
+              >
+                Subscribe +
+              </button>
+            </div>
           </div>
         ))}
     </div>
