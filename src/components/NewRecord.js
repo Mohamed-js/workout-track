@@ -27,7 +27,7 @@ const NewRecord = () => {
     }
   };
 
-  const handleRec = async (e) => {
+  const handleRec = async () => {
     setCircle(false);
     setCount(document.getElementById('circle').value);
     document.getElementById('start').style.display = 'inline-block';
@@ -50,29 +50,38 @@ const NewRecord = () => {
           name="exercise"
           id="exercise"
           onChange={handleChoose}
-          value={exercise}>
-          {options.map((option) => {
-            return (
-              <option key={`${option.name}${option.id}`} value={option.id}>
-                {option.name}
-              </option>
-            );
-          })}
+          value={exercise}
+        >
+          {options.map((option) => (
+            <option key={`${option.name}${option.id}`} value={option.id}>
+              {option.name}
+            </option>
+          ))}
         </select>
         {circle && (
-          <button id="rec" className="btn active rec" onClick={handleRec}>
+          <button
+            type="button"
+            id="rec"
+            className="btn active rec"
+            onClick={handleRec}
+          >
             RECORD +
           </button>
         )}
       </div>
 
-      <button id="start" className="btn start active" onClick={handleStart}>
+      <button
+        type="button"
+        id="start"
+        className="btn start active"
+        onClick={handleStart}
+      >
         START
       </button>
 
       {circle && (
         <div className="range-container">
-          <button id="circle" className="btn circle active">
+          <button type="button" id="circle" className="btn circle active">
             {count}
           </button>
           <input

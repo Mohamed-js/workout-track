@@ -7,15 +7,18 @@ const Landing = () => {
   if (user) history.push('/home');
   return (
     <div className="sign container">
-      <h1 className="welcome">WELCOME TO WORKOUT TRACK</h1>
-      <Link to="/signup" className="sign-up">
-        SIGN UP
-      </Link>
-      <hr />
-      <h6 className="ask">or</h6>
-      <Link to="/login" className="login">
-        LOGIN
-      </Link>
+      <h1 className="welcome text-center">WELCOME TO WORKOUT TRACK</h1>
+      <br />
+      <br />
+      <div className="flex-row center">
+        <Link to="/login" className="login active btn">
+          LOGIN
+        </Link>
+        |
+        <Link to="/signup" className="sign-up">
+          SIGN UP
+        </Link>
+      </div>
     </div>
   );
 };

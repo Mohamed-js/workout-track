@@ -14,17 +14,19 @@ const Tracked = () => {
       <br />
       <br />
       <div className="grid">
-        {trackedMovements &&
-          trackedMovements.map((movement) => {
+        {trackedMovements
+          && trackedMovements.map((movement) => {
             if (records) {
-              latest = records.filter((x) => x.movement_id === movement.id)[0];
+              // eslint-disable-next-line
+              latest = records.filter((x) => x.movementID === movement.id)[0];
             }
 
             return (
               <Link
                 key={movement.id}
                 to={`/show/${movement.id}`}
-                className="btn">
+                className="btn"
+              >
                 <div className="grid-item">
                   {}
                   <div className="img-container">
@@ -33,7 +35,12 @@ const Tracked = () => {
                   <div className="text-center name-container">
                     <h6>{movement.name.toUpperCase()}</h6>
                     <p>
-                      <span>{latest.movement_count} </span>
+                      {latest && (
+                      <span>
+                        {latest.movementCount}
+                        {' '}
+                      </span>
+                      )}
                     </p>
                     <h6>latest</h6>
                   </div>

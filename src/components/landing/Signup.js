@@ -20,18 +20,23 @@ const SignUp = () => {
 
   return (
     <>
-      <h1>SignUp</h1>
       <br />
-      {success && <span className="alert-good">{success}</span>}
+      <h1 className="text-center ">SignUp</h1>
+
+      <div className="flex-col center">
+        {success && <span className="alert-good">{success}</span>}
+        {success && success !== 'Successfully signed up!' && (
+          <span className="alert-bad">{success}</span>
+        )}
+      </div>
       <br />
-      <br />
-      <br />
-      <form onSubmit={handleSubmit} className="signup">
+      <form onSubmit={handleSubmit} className="flex-col">
         <input
           onChange={handleChange}
           type="text"
           className="name"
           name="name"
+          placeholder="Name"
           required
         />
         <input
@@ -39,16 +44,25 @@ const SignUp = () => {
           type="password"
           className="password"
           name="password"
+          placeholder="Password"
           required
         />
+        <label htmlFor="date" className="flex-col">
+          Date of birth:
+          <input
+            id="date"
+            onChange={handleChange}
+            type="date"
+            className="birth_date"
+            name="birth_date"
+            required
+          />
+        </label>
         <input
-          onChange={handleChange}
-          type="date"
-          className="birth_date"
-          name="birth_date"
-          required
+          type="submit"
+          className="submit btn active login"
+          value="SIGN UP"
         />
-        <input type="submit" className="submit" />
       </form>
     </>
   );

@@ -1,13 +1,14 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Bottombar from './components/Bottombar.jsx';
-import Addmove from './components/home/Addmove.jsx';
-import Login from './components/landing/Login.jsx';
-import SignUp from './components/landing/Signup.jsx';
-import Navbar from './components/Navbar.jsx';
-import NewRecord from './components/NewRecord.jsx';
-import Home from './containers/Home.jsx';
-import Landing from './containers/Landing.jsx';
-import Showpage from './containers/Movement.jsx';
+import Bottombar from './components/Bottombar';
+import Addmove from './components/home/Addmove';
+import Login from './components/landing/Login';
+import SignUp from './components/landing/Signup';
+import Logout from './components/Logout';
+import Navbar from './components/Navbar';
+import NewRecord from './components/NewRecord';
+import Home from './containers/Home';
+import Landing from './containers/Landing';
+import Showpage from './containers/Movement';
 
 function App() {
   const loggedin = JSON.parse(sessionStorage.getItem('current_user'));
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/new" component={Addmove} />
           <Route exact path="/show/:id" component={Showpage} />
           <Route exact path="/new-record" component={NewRecord} />
+          <Route exact path="/logout" component={Logout} />
         </Switch>
 
         {loggedin && <Bottombar />}

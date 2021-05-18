@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   fetchUntrackedMovements,
   fetchTrackedMovements,
   fetchUserRecords,
 } from '../actions';
-import { useDispatch } from 'react-redux';
 import Tracked from '../components/home/Tracked';
 
 const Home = () => {

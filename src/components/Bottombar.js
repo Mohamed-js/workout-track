@@ -8,7 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import React from 'react';
 import { useHistory } from 'react-router';
-const Bottombar = ({ header = 'Workout Track', back }) => {
+
+const Bottombar = () => {
   const history = useHistory();
   return (
     <h2 className="flex-row bottombar">
@@ -26,14 +27,16 @@ const Bottombar = ({ header = 'Workout Track', back }) => {
         />
         <p>Movements</p>
       </div>
-      <div className={'nav-item '}>
+      <div className="nav-item ">
         <FontAwesomeIcon icon={faChartPie} onClick={() => history.back} />
         <p>Your progress</p>
       </div>
       <div className="nav-item">
         <FontAwesomeIcon
           icon={faEllipsisH}
-          onClick={() => sessionStorage.removeItem('current_user')}
+          onClick={() => {
+            history.push('/logout');
+          }}
         />
         <p>More</p>
       </div>

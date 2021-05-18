@@ -17,26 +17,26 @@ const Login = () => {
     e.preventDefault();
     setFailure('');
     const respond = await signin(credits);
-    if (respond[0] === undefined)
-      return setFailure('Sorry, you entered wrong credits!');
+    if (respond[0] === undefined) return setFailure('Sorry, you entered wrong credits!');
     setFailure('');
     sessionStorage.setItem('current_user', JSON.stringify(respond[0]));
-    history.push('/home');
+    return history.push('/home');
   };
   return (
-    <>
+    <div className="flex-col">
       <h1>Login</h1>
       <br />
       {failure && <span className="alert-bad">{failure}</span>}
       <br />
       <br />
       <br />
-      <form onSubmit={handleSubmit} className="signup">
+      <form onSubmit={handleSubmit} className="signup flex-col">
         <input
           onChange={handleChange}
           type="text"
           className="name"
           name="name"
+          placeholder="Name"
           required
         />
         <input
@@ -44,12 +44,13 @@ const Login = () => {
           type="password"
           className="password"
           name="password"
+          placeholder="*******"
           required
         />
 
-        <input type="submit" className="submit" />
+        <input type="submit" className="login active" value="LOGIN" />
       </form>
-    </>
+    </div>
   );
 };
 

@@ -15,6 +15,12 @@ a {
   text-decoration: none;
 }
 
+input {
+  margin-bottom: 8px;
+  padding: 6px;
+  border: 1px solid#cececea9;
+}
+
 .App {
   min-height: 100vh;
   position: relative;
@@ -26,6 +32,13 @@ a {
 
 .flex-row {
   display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   width: 100%;
 }
@@ -75,6 +88,7 @@ a {
   padding: 5px;
   border-radius: 4px;
   border: none;
+  padding-top: 8px;
 }
 
 .m-auto {
@@ -256,10 +270,10 @@ a {
 }
 
 .alert-good {
-  margin: 0;
+  margin: 0 auto;
   padding: 20px 10px;
   border: #05cc05 1px solid;
-  background-color: rgb(69 255 122 / 20%);
+  background-color: rgba(69, 255, 122, 0.2);
   color: #02c102;
 }
 
@@ -267,6 +281,36 @@ a {
   margin: 0;
   padding: 20px 10px;
   border: #cc0505 1px solid;
-  background-color: rgb(255 69 69 / 20%);
+  background-color: rgba(255, 69, 69, 0.2);
   color: #ca0505;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.center {
+  justify-content: center;
+}
+
+.login {
+  margin-right: 5px;
+}
+
+input.login {
+  padding: 5px;
+  border-radius: 4px;
+  border: none;
+  margin-top: 8px;
+}
+
+.sign-up {
+  margin-left: 5px;
+}
+
+.logout {
+  background-color: white;
+  padding: 10px;
+  font-weight: 700;
+  color: #8797a6;
 }
