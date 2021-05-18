@@ -18,7 +18,7 @@ const Tracked = () => {
           && trackedMovements.map((movement) => {
             if (records) {
               // eslint-disable-next-line
-              latest = records.filter((x) => x.movementID === movement.id)[0];
+              latest = records.filter((x) => x.movement_id === movement.id)[0];
             }
 
             return (
@@ -37,7 +37,7 @@ const Tracked = () => {
                     <p>
                       {latest && (
                       <span>
-                        {latest.movementCount}
+                        {latest.movement_count}
                         {' '}
                       </span>
                       )}
