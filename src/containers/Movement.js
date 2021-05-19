@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import { CircularProgressbar } from 'react-circular-progressbar';
-import { fetchUserRecords } from '../actions';
 import 'react-circular-progressbar/dist/styles.css';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { fetchUserRecords } from '../actions';
 import { movementUserTopscore } from '../Helper';
 
 const Showpage = () => {
@@ -32,11 +35,13 @@ const Showpage = () => {
             <h5 className="grey">{rec.movement.category.toUpperCase()}</h5>
             <h5 className="grey">{rec.movement.name.toUpperCase()}</h5>
           </div>
-
+          <Link to={`/new-record/${id}`} className="green">
+            New score
+            <FontAwesomeIcon icon={faPlus} />
+          </Link>
           {topScore && (
             <h3 className="grey bold">
               Top score:
-              {' '}
               {topScore.movement_count}
             </h3>
           )}

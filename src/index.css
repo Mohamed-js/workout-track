@@ -107,7 +107,7 @@ button.nav-item svg {
 }
 
 .m-auto {
-  margin: auto;
+  margin: auto!important;
 }
 
 .header {
@@ -121,6 +121,11 @@ button.nav-item svg {
 
 .back svg {
   color: white;
+}
+
+.green svg {
+  color: white;
+  margin-left: 5px;
 }
 
 .grid {
@@ -247,8 +252,9 @@ button.nav-item svg {
 
 .rec {
   min-width: 30%;
+  background-color: #4caf50;
+  width: 50%;
   margin-left: 10px;
-  background-color: #47e841;
 }
 
 .custom-select {
@@ -392,4 +398,11 @@ input.login {
 
 .grey {
   color: #747474;
+}
+
+.green {
+  color: white;
+  background-color: #4caf50;
+  padding: 8px;
+  border-radius: 4px;
 }
