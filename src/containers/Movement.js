@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import { CircularProgressbar } from 'react-circular-progressbar';
+import { fetchUserRecords } from '../actions';
 import 'react-circular-progressbar/dist/styles.css';
 import { movementUserTopscore } from '../Helper';
 
 const Showpage = () => {
   const { id } = useParams(':id');
-  const user = JSON.parse(sessionStorage.getItem('current_user'));
-  const allrecords = useSelector((state) => state.user.records);
   const [topScore, setTopScore] = useState();
-
-  const records = allrecords.filter((x) => `${x.movement_id}` === id);
-  const rec = records[0];
+  const dispatch = useDispatch();
+  const user = JSON.parse(sessionStorage.getItem('current_user'));
 
   useEffect(() => {
+    dispatch(fetchUserRecords(user.id));
     movementUserTopscore(user.id, id).then((data) => setTopScore(data));
   }, []);
+
+  const allrecords = useSelector((state) => state.user.records);
+  const records = allrecords.filter((x) => `${x.movement_id}` === id);
+  const rec = records[0];
 
   return (
     <>

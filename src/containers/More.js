@@ -5,6 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const More = () => {
   const history = useHistory();
+  const user = JSON.parse(sessionStorage.getItem('current_user'));
+  if (!user) {
+    history.push('/');
+  }
   return (
     <div className="container">
       <button

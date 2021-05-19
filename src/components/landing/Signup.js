@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import { signup } from '../../Helper';
 
 const SignUp = () => {
+  const history = useHistory();
   const [credits, setCredits] = useState({
     name: '',
     password: '',
     birth_date: '',
   });
   const [success, setSuccess] = useState();
-
+  const user = JSON.parse(sessionStorage.getItem('current_user'));
+  if (user) {
+    history.push('/home');
+  }
   const handleChange = (e) => {
     setCredits({ ...credits, [e.target.name]: e.target.value });
   };
@@ -24,7 +30,13 @@ const SignUp = () => {
       <h1 className="text-center ">SignUp</h1>
 
       <div className="flex-col center">
-        {success && <span className="alert-good">{success}</span>}
+        {success && (
+          <span className="alert-good">
+            {success}
+            {' '}
+            <Link to="/login">Click here to login.</Link>
+          </span>
+        )}
         {success && success !== 'Successfully signed up!' && (
           <span className="alert-bad">{success}</span>
         )}

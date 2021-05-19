@@ -9,6 +9,10 @@ const Login = () => {
     password: '',
   });
   const [failure, setFailure] = useState();
+  const user = JSON.parse(sessionStorage.getItem('current_user'));
+  if (user) {
+    history.push('/home');
+  }
 
   const handleChange = (e) => {
     setCredits({ ...credits, [e.target.name]: e.target.value });

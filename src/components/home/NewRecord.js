@@ -1,20 +1,34 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 import { newRecord } from '../../Helper';
+import { fetchUserRecords } from '../../actions';
 
 const NewRecord = () => {
   const [exercise, setExercise] = useState();
   const [count, setCount] = useState(0);
   const [circle, setCircle] = useState();
   const [message, setMessage] = useState();
-
+  const history = useHistory();
   const user = JSON.parse(sessionStorage.getItem('current_user'));
+  if (!user) {
+    history.push('/');
+  }
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (user) {
+      dispatch(fetchUserRecords(user.id));
+    }
+  });
 
   const trackedMovements = useSelector((state) => state.user.trackedMovements);
   const options = [''];
-  trackedMovements.forEach((movement) => {
-    options.push({ name: movement.name, id: movement.id });
-  });
+  if (trackedMovements) {
+    trackedMovements.forEach((movement) => {
+      options.push({ name: movement.name, id: movement.id });
+    });
+  }
 
   const handleChoose = (e) => {
     setExercise(e.target.value);
@@ -83,7 +97,7 @@ const NewRecord = () => {
         <div className="range-container">
           <button type="button" id="circle" className="btn circle active">
             {count}
-            <h6>times</h6>
+            <h6 className="m-0">Times</h6>
           </button>
           <input
             className="custom-select"

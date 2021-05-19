@@ -12,8 +12,6 @@ import Showpage from './containers/Movement';
 import Profile from './components/more/Profile';
 
 function App() {
-  const loggedin = JSON.parse(sessionStorage.getItem('current_user'));
-
   return (
     <div className="App">
       <Router>
@@ -30,7 +28,7 @@ function App() {
           <Route exact path="/profile" component={Profile} />
         </Switch>
 
-        {loggedin && <Bottombar />}
+        <Bottombar />
       </Router>
     </div>
   );

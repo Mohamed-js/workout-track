@@ -9,8 +9,10 @@ const Addmove = () => {
   const { user } = useSelector((state) => state.user);
 
   useEffect(() => {
-    dispatch(fetchUntrackedMovements(user.id));
-  }, [dispatch, user.id]);
+    if (user) {
+      dispatch(fetchUntrackedMovements(user.id));
+    }
+  }, [dispatch, user]);
 
   const handleClick = (e) => {
     newMovement(user.id, e.target.id);
