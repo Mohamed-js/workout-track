@@ -16,8 +16,8 @@ const Profile = () => {
       <div className="grid container">
         <div className="profile-grid-item btn white-bg">
           <FontAwesomeIcon icon={faWeight} className="grey" />
-          <h5 className="m-0">Weight</h5>
-          <h4>
+          <h5 className="m-0 grey">Weight</h5>
+          <h4 className="grey">
             {user.current_weight}
             {' '}
             kg
@@ -25,8 +25,8 @@ const Profile = () => {
         </div>
         <div className="profile-grid-item btn white-bg">
           <FontAwesomeIcon icon={faTape} className="grey" />
-          <h5 className="m-0">Height</h5>
-          <h4>
+          <h5 className="m-0 grey">Height</h5>
+          <h4 className="grey">
             {user.height}
             {' '}
             cm
@@ -34,13 +34,13 @@ const Profile = () => {
         </div>
         <div className="profile-grid-item btn white-bg">
           <FontAwesomeIcon icon={faRulerHorizontal} className="grey" />
-          <h5 className="m-0">Left arm size</h5>
-          <h4>{user.current_left_arm_size}</h4>
+          <h5 className="m-0 grey">Left arm size</h5>
+          <h4 className="grey">{user.current_left_arm_size}</h4>
         </div>
         <div className="profile-grid-item btn white-bg">
           <FontAwesomeIcon icon={faRulerHorizontal} className="grey" />
-          <h5 className="m-0">Right arm size</h5>
-          <h4>{user.current_right_arm_size}</h4>
+          <h5 className="m-0 grey">Right arm size</h5>
+          <h4 className="grey">{user.current_right_arm_size}</h4>
         </div>
       </div>
     </div>

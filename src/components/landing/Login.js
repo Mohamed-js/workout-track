@@ -28,7 +28,7 @@ const Login = () => {
   };
   return (
     <div className="flex-col">
-      <h1>Login</h1>
+      <h1 className="v-bold">Login</h1>
       <br />
       {failure && <span className="alert-bad">{failure}</span>}
       <br />

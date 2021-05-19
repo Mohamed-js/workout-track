@@ -8,7 +8,7 @@ const Tracked = () => {
   let latest = 0;
   return (
     <div>
-      <Link to="/new" className="btn active">
+      <Link to="/new" className="btn active track-plus">
         Track +
       </Link>
       <br />
@@ -33,10 +33,10 @@ const Tracked = () => {
                     <img src={movement.image} alt={movement.name} />
                   </div>
                   <div className="text-center name-container">
-                    <h6>{movement.name.toUpperCase()}</h6>
-                    <p>
+                    <h6 className="m-0 bold">{movement.name.toUpperCase()}</h6>
+                    <p className="m-0">
                       {latest && (
-                      <span>
+                      <span className="track-plus">
                         {latest.movement_count}
                         {' '}
                       </span>

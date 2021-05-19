@@ -58,7 +58,7 @@ const NewRecord = () => {
       {message && message.message && (
         <h4 className="alert-good">{message.message}</h4>
       )}
-      <h4>Choose the exercise:</h4>
+      <h4 className="grey">Choose the exercise:</h4>
       <div className="control-row">
         <select
           name="exercise"
@@ -87,7 +87,7 @@ const NewRecord = () => {
       <button
         type="button"
         id="start"
-        className="btn start active"
+        className="btn start active v-bold"
         onClick={handleStart}
       >
         START

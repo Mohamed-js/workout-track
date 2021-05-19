@@ -8,7 +8,7 @@ const Navbar = () => {
   const history = useHistory();
   return (
     <div className="flex-row navbar">
-      <h4 className="header">Workout Track</h4>
+      <h3 className="header bold">Workout Track</h3>
 
       <h3 className="back">
         <FontAwesomeIcon

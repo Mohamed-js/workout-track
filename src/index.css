@@ -1,13 +1,14 @@
-@import url(https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;900&display=swap);
 
 * {
   box-sizing: border-box;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 500;
 }
 
 body {
   margin: 0;
   background-color: #f3f4f6;
-  font-family: 'Balsamiq Sans', cursive;
 }
 
 a {
@@ -19,6 +20,14 @@ input {
   margin-bottom: 8px;
   padding: 6px;
   border: 1px solid#cececea9;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.v-bold {
+  font-weight: 700;
 }
 
 .App {
@@ -69,8 +78,15 @@ input {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 15px 0;
+  padding: 20px 0;
   width: 25%;
+  background-color: #323943;
+  color: #b0b4b9;
+  border: none;
+}
+
+button.nav-item svg {
+  margin-bottom: 5px;
 }
 
 .bottombar p {
@@ -88,7 +104,6 @@ input {
   padding: 5px;
   border-radius: 4px;
   border: none;
-  padding-top: 8px;
 }
 
 .m-auto {
@@ -97,11 +112,15 @@ input {
 
 .header {
   position: absolute;
-  left: calc(50% - 53px);
+  left: calc(50% - 69px);
 }
 
 .back {
   padding-left: 10px;
+}
+
+.back svg {
+  color: white;
 }
 
 .grid {
@@ -137,18 +156,17 @@ input {
 
 .name-container h6 {
   margin: 0;
-  margin-bottom: 5px;
 }
 
 .name-container p {
   margin: 0;
   font-size: small;
-  margin-top: 5px;
 }
 
 .name-container span {
-  color: #8797a6;
-  font-size: 23px;
+  color: #878b91;
+  font-size: 26px;
+  font-weight: 700;
 }
 
 .img-container img {
@@ -365,4 +383,13 @@ input.login {
 
 .svg-inline--fa {
   color: #b0b4b9;
+  font-size: 18px;
+}
+
+.track-plus {
+  font-weight: 500;
+}
+
+.grey {
+  color: #747474;
 }
