@@ -4,7 +4,7 @@ import { newRecord } from '../Helper';
 
 const NewRecord = () => {
   const [exercise, setExercise] = useState();
-  const [count, setCount] = useState(50);
+  const [count, setCount] = useState(0);
   const [circle, setCircle] = useState();
   const [message, setMessage] = useState();
 
@@ -31,7 +31,7 @@ const NewRecord = () => {
     setCircle(false);
     setCount(document.getElementById('circle').value);
     document.getElementById('start').style.display = 'inline-block';
-    const message = await newRecord(user.name, exercise, count);
+    const message = await newRecord(user.id, exercise, count);
     setMessage(message);
   };
 
@@ -87,6 +87,7 @@ const NewRecord = () => {
           <input
             className="custom-select"
             type="range"
+            defaultValue="0"
             min="0"
             max="100"
             onChange={handleCount}

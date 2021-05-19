@@ -13,7 +13,7 @@ const Addmove = () => {
   }, [dispatch, user.id]);
 
   const handleClick = (e) => {
-    newMovement(String(user.name), e.target.id);
+    newMovement(user.id, e.target.id);
     e.target.disabled = true;
     e.target.style.backgroundColor = '#4caf50';
     e.target.textContent = 'Subscribed';

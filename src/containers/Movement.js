@@ -74,11 +74,11 @@ const Showpage = () => {
                       <div className="row">
                         <div className="img">
                           <CircularProgressbar
-                            value={move.movementCount}
-                            text={`${move.movementCount}%`}
+                            value={move.movement_count}
+                            text={`${move.movement_count}%`}
                           />
                         </div>
-                        <h4>{move.movementCount}</h4>
+                        <h4>{move.movement_count}</h4>
                       </div>
                     </div>
                   </div>
