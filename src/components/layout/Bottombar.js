@@ -35,7 +35,7 @@ const Bottombar = () => {
         <FontAwesomeIcon
           icon={faEllipsisH}
           onClick={() => {
-            history.push('/logout');
+            history.push('/more');
           }}
         />
         <p>More</p>

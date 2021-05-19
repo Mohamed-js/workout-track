@@ -40,7 +40,7 @@ const Showpage = () => {
           <h5 className="today">Today</h5>
           {records.map((move) => {
             const date = new Date();
-
+            const timestamp = new Date(move.created_at);
             return (
               <div key={move.id}>
                 {date.toLocaleDateString()
@@ -54,7 +54,19 @@ const Showpage = () => {
                             text={`${move.movement_count}%`}
                           />
                         </div>
-                        <h4>{move.movement_count}</h4>
+                        <div className="baseline-col">
+                          <h5 className="m-0">
+                            {timestamp.toLocaleDateString()}
+                          </h5>
+                          <h6 className="m-0">
+                            {move.movement_count}
+                            {' '}
+                            times
+                          </h6>
+                        </div>
+                      </div>
+                      <div className="img-container full-width img-container-adjust">
+                        <img src={rec.movement.image} alt="record" />
                       </div>
                     </div>
                   </div>
@@ -64,11 +76,12 @@ const Showpage = () => {
           })}
           <h5 className="today">Past records</h5>
           {records.map((move) => {
-            const date = new Date();
+            const today = new Date();
+            const timestamp = new Date(move.created_at);
             return (
               <div key={move.id}>
-                {date.toLocaleDateString()
-                  !== new Date(move.created_at).toLocaleDateString() && (
+                {today.toLocaleDateString()
+                  !== timestamp.toLocaleDateString() && (
                   <div>
                     <div className="card-row">
                       <div className="row">
@@ -78,7 +91,19 @@ const Showpage = () => {
                             text={`${move.movement_count}%`}
                           />
                         </div>
-                        <h4>{move.movement_count}</h4>
+                        <div className="baseline-col">
+                          <h5 className="m-0">
+                            {timestamp.toLocaleDateString()}
+                          </h5>
+                          <h6 className="m-0">
+                            {move.movement_count}
+                            {' '}
+                            times
+                          </h6>
+                        </div>
+                      </div>
+                      <div className="img-container full-width img-container-adjust">
+                        <img src={rec.movement.image} alt="record" />
                       </div>
                     </div>
                   </div>

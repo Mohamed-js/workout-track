@@ -1,12 +1,23 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt, faPersonBooth } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Logout = () => {
+const More = () => {
   const history = useHistory();
   return (
     <div className="container">
+      <button
+        type="button"
+        className="logout flex-row btn space-between"
+        onClick={() => {
+          history.push('/profile');
+        }}
+      >
+        PROFILE
+        <FontAwesomeIcon icon={faPersonBooth} />
+      </button>
+      <br />
       <button
         type="button"
         className="logout flex-row btn space-between"
@@ -22,4 +33,4 @@ const Logout = () => {
   );
 };
 
-export default Logout;
+export default More;

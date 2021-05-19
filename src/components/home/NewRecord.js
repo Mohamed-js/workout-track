@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { newRecord } from '../Helper';
+import { newRecord } from '../../Helper';
 
 const NewRecord = () => {
   const [exercise, setExercise] = useState();
@@ -83,6 +83,7 @@ const NewRecord = () => {
         <div className="range-container">
           <button type="button" id="circle" className="btn circle active">
             {count}
+            <h6>times</h6>
           </button>
           <input
             className="custom-select"

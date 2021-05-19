@@ -323,3 +323,46 @@ input.login {
   margin-top: 3px;
   padding: 4px;
 }
+
+.baseline-col {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-around;
+}
+
+.img-container-adjust {
+  min-height: 100%;
+  justify-content: flex-end;
+}
+
+.img-container-adjust img {
+  width: 100px;
+}
+
+.circle {
+  border-radius: 50%;
+  max-height: 150px;
+  max-width: 150px;
+}
+
+.profile-grid-item {
+  min-height: 71px;
+}
+
+.profile-grid-item h5,
+.profile-grid-item h4 {
+  margin: 5px;
+}
+
+.pt-0 {
+  padding-top: 0;
+}
+
+.white-bg {
+  background-color: white;
+}
+
+.svg-inline--fa {
+  color: #b0b4b9;
+}
