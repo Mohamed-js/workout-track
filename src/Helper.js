@@ -52,3 +52,12 @@ export const movementUserTopscore = async (userID, movementID) => {
     .then((data) => data);
   return respond;
 };
+
+export const updateProfile = async (userID, weight, height, leftArm, rightArm) => {
+  const respond = await fetch(
+    `https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/user/profile/${userID}/${weight}/${height}/${leftArm}/${rightArm}`,
+  )
+    .then((res) => res.json())
+    .then((data) => data);
+  return respond;
+};

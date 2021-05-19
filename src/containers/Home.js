@@ -5,6 +5,7 @@ import { fetchTrackedMovements, fetchUserRecords } from '../actions';
 import Tracked from '../components/home/Tracked';
 
 const Home = () => {
+  // sessionStorage.removeItem('current_user');
   const dispatch = useDispatch();
   const history = useHistory();
   const user = JSON.parse(sessionStorage.getItem('current_user'));

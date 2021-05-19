@@ -107,7 +107,7 @@ button.nav-item svg {
 }
 
 .m-auto {
-  margin: auto!important;
+  margin: auto !important;
 }
 
 .header {
@@ -377,6 +377,11 @@ input.login {
 .profile-grid-item h5,
 .profile-grid-item h4 {
   margin: 5px;
+}
+
+.profile-grid-item input {
+  max-width: 85px;
+  margin-right: 5px;
 }
 
 .pt-0 {
