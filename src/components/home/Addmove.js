@@ -19,7 +19,7 @@ const Addmove = () => {
     e.target.disabled = true;
     e.target.style.backgroundColor = '#4caf50';
     e.target.textContent = 'Subscribed';
-    dispatch(fetchUntrackedMovements());
+    dispatch(fetchUntrackedMovements(user.id));
   };
 
   const { movements } = useSelector((state) => state.untrackedMovements);

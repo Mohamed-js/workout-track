@@ -431,15 +431,19 @@ input.login {
 
 /* Dialog */
 
+.danger {
+  background-color: #e91e63;
+}
+
 .welcome-dialog {
   position: fixed;
-  width: 200px;
-  top: 30%;
-  left: calc(50% - 100px);
+  width: calc(100% - 40px);
+  top: 20%;
   border: #8797a68f solid 1px;
   border-radius: 8px;
   padding: 10px;
   background-color: white;
+  box-shadow: #8797a6 5px 5px 15px;
 }
 
 .progress {

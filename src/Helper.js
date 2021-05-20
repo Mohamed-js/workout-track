@@ -71,8 +71,6 @@ export const updateProfile = async (
   userID,
   Weight,
   Height,
-  leftArm,
-  rightArm,
 ) => {
   const respond = await fetch(
     'https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/user/profile',
@@ -83,8 +81,6 @@ export const updateProfile = async (
         user_id: userID,
         weight: Weight,
         height: Height,
-        left_arm: leftArm,
-        right_arm: rightArm,
       }),
     },
   )

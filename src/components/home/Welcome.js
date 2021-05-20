@@ -10,27 +10,27 @@ const Welcome = ({ user }) => {
   return (
     <div className="welcome-dialog text-center">
       {/* <h6> */}
-      <button type="button" className="btn active" onClick={handleClick}>×</button>
+      <button type="button" className="btn active danger" onClick={handleClick}>×</button>
       {/* </h6> */}
-      <h5>
+      <h4>
         Hi
         {' '}
         {name.toUpperCase()}
         ,
-      </h5>
+      </h4>
 
-      <h6>
+      <h5>
         Please
         {' - '}
-        <Link to="/profile" className="active">
+        <Link to="/profile" className="active green">
           {' '}
           click here
           {' '}
         </Link>
-        {' - '}
-        to update your profile...
+        {' -  '}
+        to fill your profile...
         {' '}
-      </h6>
+      </h5>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 
 const ProgressItem = (props) => {
   const { value, text } = props;
+  let val = value;
   let color = '#3e98c7';
   if (text === 'BMI' && (value > 24.9 || value < 18.5)) {
     color = '#ffc107';
@@ -11,11 +12,17 @@ const ProgressItem = (props) => {
   if (text === 'BMI' && value > 30) {
     color = 'crimson';
   }
+
+  if (text === 'BMI' && value === 'NaN') {
+    color = 'crimson';
+    val = 0;
+  }
+
   return (
     <div className="progress-item text-center">
       <CircularProgressbar
-        value={value}
-        text={`${value}%`}
+        value={val}
+        text={`${val}%`}
         styles={buildStyles({
           textColor: color,
           pathColor: color,

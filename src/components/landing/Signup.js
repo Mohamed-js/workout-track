@@ -49,6 +49,7 @@ const SignUp = () => {
           className="name"
           name="name"
           placeholder="Name"
+          minLength="6"
           required
         />
         <input
@@ -56,6 +57,7 @@ const SignUp = () => {
           type="password"
           className="password"
           name="password"
+          minLength="6"
           placeholder="Password"
           required
         />

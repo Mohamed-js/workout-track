@@ -23,7 +23,7 @@ const Home = () => {
 
   return (
     <div className="container">
-      {!user.current_weight && !user.height && <Welcome user={user} />}
+      { user && !user.current_weight && !user.height && <Welcome user={user} />}
       <Tracked />
     </div>
   );

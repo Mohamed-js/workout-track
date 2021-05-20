@@ -41,7 +41,7 @@ const Progress = () => {
           />
         )}
       </div>
-
+      {(bmi > 24.9 || bmi < 18.5) && (
       <h6 className="grey text-center">
         Your have to
         {' '}
@@ -51,7 +51,7 @@ const Progress = () => {
         {' '}
         kg to achive the perfect weight.
       </h6>
-
+      )}
       <div className="white-bg rounded full-width progress grey">
         <ul>
           <li>Underweight </li>
