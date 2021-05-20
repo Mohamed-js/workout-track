@@ -28,7 +28,12 @@ export const signin = async (credits) => {
 
 export const newMovement = async (userID, movementID) => {
   const respond = await fetch(
-    `https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/movements/new/${userID}/${movementID}`,
+    'https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/movements/new',
+    {
+      headers: { 'Content-Type': 'application/json' },
+      method: 'post',
+      body: JSON.stringify({ user_id: userID, movement_id: movementID }),
+    },
   )
     .then((res) => res.json())
     .then((data) => data);
@@ -37,7 +42,16 @@ export const newMovement = async (userID, movementID) => {
 
 export const newRecord = async (userID, movementID, movementCount) => {
   const respond = await fetch(
-    `https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/user/records/new/${userID}/${movementID}/${movementCount}`,
+    'https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/user/records/new',
+    {
+      headers: { 'Content-Type': 'application/json' },
+      method: 'post',
+      body: JSON.stringify({
+        user_id: userID,
+        movement_id: movementID,
+        movement_count: movementCount,
+      }),
+    },
   )
     .then((res) => res.json())
     .then((data) => data);
@@ -53,9 +67,26 @@ export const movementUserTopscore = async (userID, movementID) => {
   return respond;
 };
 
-export const updateProfile = async (userID, weight, height, leftArm, rightArm) => {
+export const updateProfile = async (
+  userID,
+  weight,
+  height,
+  leftArm,
+  rightArm,
+) => {
   const respond = await fetch(
     `https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/user/profile/${userID}/${weight}/${height}/${leftArm}/${rightArm}`,
+    {
+      headers: { 'Content-Type': 'application/json' },
+      method: 'post',
+      body: JSON.stringify({
+        user_id: userID,
+        weight,
+        height,
+        left_arm: leftArm,
+        right_arm: rightArm,
+      }),
+    },
   )
     .then((res) => res.json())
     .then((data) => data);
