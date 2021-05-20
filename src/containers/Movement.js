@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
-import { CircularProgressbar } from 'react-circular-progressbar';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -50,6 +50,10 @@ const Showpage = () => {
           {records.map((move) => {
             const date = new Date();
             const timestamp = new Date(move.created_at);
+            let color = move.movement_count > 70 ? '#4caf50' : '#3e98c7';
+            if (move.movement_count < 20) {
+              color = '#ffc107';
+            }
             return (
               <div key={move.id}>
                 {date.toLocaleDateString()
@@ -61,6 +65,11 @@ const Showpage = () => {
                           <CircularProgressbar
                             value={move.movement_count}
                             text={`${move.movement_count}%`}
+                            styles={buildStyles({
+                              textColor: color,
+                              pathColor: color,
+                              trailColor: '#cdcdcd',
+                            })}
                           />
                         </div>
                         <div className="baseline-col">
@@ -87,6 +96,10 @@ const Showpage = () => {
           {records.map((move) => {
             const today = new Date();
             const timestamp = new Date(move.created_at);
+            let color = move.movement_count > 70 ? '#4caf50' : '#3e98c7';
+            if (move.movement_count < 20) {
+              color = '#ffc107';
+            }
             return (
               <div key={move.id}>
                 {today.toLocaleDateString()
@@ -98,6 +111,11 @@ const Showpage = () => {
                           <CircularProgressbar
                             value={move.movement_count}
                             text={`${move.movement_count}%`}
+                            styles={buildStyles({
+                              textColor: color,
+                              pathColor: color,
+                              trailColor: '#cdcdcd',
+                            })}
                           />
                         </div>
                         <div className="baseline-col">

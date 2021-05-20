@@ -11,6 +11,7 @@ import Landing from './containers/Landing';
 import Showpage from './containers/Movement';
 import Profile from './components/more/Profile';
 import NewSpecificRecord from './components/home/NewSpecificRecord';
+import Progress from './containers/Progress';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/new-record/:id" component={NewSpecificRecord} />
           <Route exact path="/more" component={More} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/progress" component={Progress} />
         </Switch>
 
         <Bottombar />

@@ -17,7 +17,7 @@ const Profile = () => {
   const user = JSON.parse(sessionStorage.getItem('current_user'));
   const [updating, setUpdating] = useState(false);
   const [profile, setProfile] = useState({
-    weight: user.weight,
+    weight: user.current_weight,
     height: user.height,
     left_arm: user.current_left_arm_size,
     right_arm: user.current_right_arm_size,

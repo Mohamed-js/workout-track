@@ -392,6 +392,10 @@ input.login {
   background-color: white;
 }
 
+.rounded {
+  border-radius: 8px;
+}
+
 .svg-inline--fa {
   color: #b0b4b9;
   font-size: 18px;
@@ -423,4 +427,32 @@ input.login {
   border-radius: 8px;
   padding: 10px;
   background-color: white;
+}
+
+.progress {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+  height: 130px;
+}
+
+.progress-item {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progress ul {
+  font-size: small;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.progress li {
+  font-weight: 400;
+  font-size: 12px;
+  margin-bottom: 3px;
 }
