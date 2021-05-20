@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { fetchTrackedMovements, fetchUserRecords } from '../actions';
 import Tracked from '../components/home/Tracked';
+import Welcome from '../components/home/Welcome';
 
 const Home = () => {
-  // sessionStorage.removeItem('current_user');
   const dispatch = useDispatch();
   const history = useHistory();
   const user = JSON.parse(sessionStorage.getItem('current_user'));
@@ -23,6 +23,7 @@ const Home = () => {
 
   return (
     <div className="container">
+      {!user.current_weight && !user.height && <Welcome user={user} />}
       <Tracked />
     </div>
   );

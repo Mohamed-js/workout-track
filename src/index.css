@@ -411,3 +411,16 @@ input.login {
   padding: 8px;
   border-radius: 4px;
 }
+
+/* Dialog */
+
+.welcome-dialog {
+  position: fixed;
+  width: 200px;
+  top: 30%;
+  left: calc(50% - 100px);
+  border: #8797a68f solid 1px;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: white;
+}
