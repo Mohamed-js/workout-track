@@ -69,20 +69,20 @@ export const movementUserTopscore = async (userID, movementID) => {
 
 export const updateProfile = async (
   userID,
-  weight,
-  height,
+  Weight,
+  Height,
   leftArm,
   rightArm,
 ) => {
   const respond = await fetch(
-    `https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/user/profile/${userID}/${weight}/${height}/${leftArm}/${rightArm}`,
+    `https://diagnoser-proxy.herokuapp.com/http://workout-track-api.herokuapp.com/api/v1/user/profile/${userID}/${Weight}/${Height}/${leftArm}/${rightArm}`,
     {
       headers: { 'Content-Type': 'application/json' },
       method: 'post',
       body: JSON.stringify({
         user_id: userID,
-        weight,
-        height,
+        weight: Weight,
+        height: Height,
         left_arm: leftArm,
         right_arm: rightArm,
       }),
