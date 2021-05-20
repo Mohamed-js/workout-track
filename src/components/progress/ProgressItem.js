@@ -30,11 +30,11 @@ const ProgressItem = (props) => {
 export default ProgressItem;
 
 ProgressItem.propTypes = {
-  value: PropTypes.number,
+  value: PropTypes.string,
   text: PropTypes.string,
 };
 
 ProgressItem.defaultProps = {
-  value: 1,
+  value: '1',
   text: '',
 };

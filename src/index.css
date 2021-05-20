@@ -409,11 +409,24 @@ input.login {
   color: #747474;
 }
 
+.big {
+  font-size: 18px;
+  font-weight: 800;
+}
+
 .green {
   color: white;
   background-color: #4caf50;
   padding: 8px;
   border-radius: 4px;
+}
+
+.height {
+  height: 180px !important;
+}
+
+.mb {
+  margin-bottom: 8px;
 }
 
 /* Dialog */
