@@ -11,6 +11,7 @@ const SignUp = () => {
     birth_date: '',
   });
   const [success, setSuccess] = useState();
+  const [failure, setFailure] = useState();
   const user = JSON.parse(sessionStorage.getItem('current_user'));
   if (user) {
     history.push('/home');
@@ -22,6 +23,7 @@ const SignUp = () => {
     e.preventDefault();
     const respond = await signup(credits);
     setSuccess(respond.message);
+    setFailure(respond.name);
   };
 
   return (
@@ -37,8 +39,12 @@ const SignUp = () => {
             <Link to="/login">Click here to login.</Link>
           </span>
         )}
-        {success && success !== 'Successfully signed up!' && (
-          <span className="alert-bad">{success}</span>
+        {failure && (
+          <span className="alert-bad">
+            The name
+            {' '}
+            {failure}
+          </span>
         )}
       </div>
       <br />
@@ -49,7 +55,7 @@ const SignUp = () => {
           className="name"
           name="name"
           placeholder="Name"
-          minLength="6"
+          minLength="3"
           required
         />
         <input

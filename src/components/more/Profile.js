@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
+// import { useHistory } from 'react-router';
 import {
   faTape,
   faWeight,
@@ -12,7 +12,7 @@ import { fetchTrackedMovements } from '../../actions';
 
 const Profile = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
   const user = JSON.parse(sessionStorage.getItem('current_user'));
   const [updating, setUpdating] = useState(false);
   const [profile, setProfile] = useState({
@@ -33,9 +33,7 @@ const Profile = () => {
       name: user.name,
       password: user.password,
     });
-
-    const res = respond;
-    sessionStorage.setItem('current_user', JSON.stringify(res[0]));
+    sessionStorage.setItem('current_user', JSON.stringify(respond[0]));
   };
 
   const handleSubmit = () => {
@@ -46,7 +44,7 @@ const Profile = () => {
     ).then(() => {
       handleLogin().then(() => {
         dispatch(fetchTrackedMovements(user.id));
-        history.push('/');
+        setUpdating(false);
       });
     });
   };
