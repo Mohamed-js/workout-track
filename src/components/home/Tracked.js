@@ -15,6 +15,9 @@ const Tracked = () => {
       <br />
       <br />
       <div className="grid">
+        {!trackedMovements[0] && (
+          <h3 className="text-center">Click one Track + to subscribe new movement...</h3>
+        )}
         {trackedMovements
           && trackedMovements.map((movement) => {
             if (records) {
@@ -37,10 +40,10 @@ const Tracked = () => {
                     <h6 className="m-0 bold">{movement.name.toUpperCase()}</h6>
                     <p className="m-0">
                       {latest && (
-                      <span className="track-plus">
-                        {latest.movement_count}
-                        {' '}
-                      </span>
+                        <span className="track-plus">
+                          {latest.movement_count}
+                          {' '}
+                        </span>
                       )}
                     </p>
                     <h6>latest</h6>
