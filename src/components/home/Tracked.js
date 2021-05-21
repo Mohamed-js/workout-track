@@ -15,7 +15,7 @@ const Tracked = () => {
       <br />
       <br />
       <div className="grid">
-        {!trackedMovements[0] && (
+        {trackedMovements && !trackedMovements[0] && (
           <h3 className="text-center">Click one Track + to subscribe new movement...</h3>
         )}
         {trackedMovements
