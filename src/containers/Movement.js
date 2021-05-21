@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { fetchUserRecords } from '../actions';
 import { movementUserTopscore } from '../Helper';
+import Record from '../components/movement/Record';
 
 const Showpage = () => {
   const { id } = useParams(':id');
@@ -47,48 +47,25 @@ const Showpage = () => {
 
           <h5 className="today grey">Today</h5>
           {records.map((move) => {
-            const date = new Date();
+            const today = new Date();
             const timestamp = new Date(move.created_at);
             let color = move.movement_count > 70 ? '#4caf50' : '#3e98c7';
             if (move.movement_count < 20) {
               color = '#ffc107';
             }
+            let isToday;
+            if (today.toLocaleDateString() === timestamp.toLocaleDateString()) {
+              isToday = true;
+            }
             return (
-              <div key={move.id}>
-                {date.toLocaleDateString()
-                  === new Date(move.created_at).toLocaleDateString() && (
-                  <div>
-                    <div className="card-row">
-                      <div className="row">
-                        <div className="img">
-                          <CircularProgressbar
-                            value={move.movement_count}
-                            text={`${move.movement_count}%`}
-                            styles={buildStyles({
-                              textColor: color,
-                              pathColor: color,
-                              trailColor: '#cdcdcd',
-                            })}
-                          />
-                        </div>
-                        <div className="baseline-col">
-                          <h5 className="m-0 grey">
-                            {timestamp.toLocaleDateString()}
-                          </h5>
-                          <h6 className="m-0 grey">
-                            {move.movement_count}
-                            {' '}
-                            times
-                          </h6>
-                        </div>
-                      </div>
-                      <div className="img-container full-width img-container-adjust">
-                        <img src={rec.movement.image} alt="record" />
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
+              <Record
+                key={move.id}
+                move={move}
+                rec={rec}
+                timestamp={timestamp}
+                color={color}
+                today={isToday}
+              />
             );
           })}
           <h5 className="today grey">Past records</h5>
@@ -99,42 +76,19 @@ const Showpage = () => {
             if (move.movement_count < 20) {
               color = '#ffc107';
             }
+            let isToday;
+            if (today.toLocaleDateString() !== timestamp.toLocaleDateString()) {
+              isToday = true;
+            }
             return (
-              <div key={move.id}>
-                {today.toLocaleDateString()
-                  !== timestamp.toLocaleDateString() && (
-                  <div>
-                    <div className="card-row">
-                      <div className="row">
-                        <div className="img">
-                          <CircularProgressbar
-                            value={move.movement_count}
-                            text={`${move.movement_count}%`}
-                            styles={buildStyles({
-                              textColor: color,
-                              pathColor: color,
-                              trailColor: '#cdcdcd',
-                            })}
-                          />
-                        </div>
-                        <div className="baseline-col">
-                          <h5 className="m-0 grey">
-                            {timestamp.toLocaleDateString()}
-                          </h5>
-                          <h6 className="m-0 grey">
-                            {move.movement_count}
-                            {' '}
-                            times
-                          </h6>
-                        </div>
-                      </div>
-                      <div className="img-container full-width img-container-adjust">
-                        <img src={rec.movement.image} alt="record" />
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
+              <Record
+                key={move.id}
+                move={move}
+                rec={rec}
+                timestamp={timestamp}
+                color={color}
+                today={isToday}
+              />
             );
           })}
           <br />
