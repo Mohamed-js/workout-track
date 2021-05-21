@@ -16,16 +16,28 @@ const SignUp = () => {
   if (user) {
     history.push('/home');
   }
+  const handleClick = () => {
+    const btn = document.getElementById('signup');
+    btn.disabled = true;
+    btn.style.backgroundColor = '#4caf50';
+    btn.value = 'Wait...';
+  };
   const handleChange = (e) => {
     setCredits({ ...credits, [e.target.name]: e.target.value });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    handleClick();
     const respond = await signup(credits);
     setSuccess(respond.message);
     setFailure(respond.name);
   };
 
+  if (failure) {
+    const btn = document.getElementById('signup');
+    btn.disabled = false;
+    btn.style.backgroundColor = '#41b5e8';
+  }
   return (
     <>
       <br />
@@ -80,6 +92,7 @@ const SignUp = () => {
         </label>
         <input
           type="submit"
+          id="signup"
           className="submit btn active login"
           value="SIGN UP"
         />

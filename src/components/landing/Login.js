@@ -17,15 +17,31 @@ const Login = () => {
   const handleChange = (e) => {
     setCredits({ ...credits, [e.target.name]: e.target.value });
   };
+
+  const handleClick = () => {
+    const btn = document.getElementById('login');
+    btn.disabled = true;
+    btn.style.backgroundColor = '#4caf50';
+    btn.value = 'Wait...';
+    btn.textContent = 'Wait...';
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFailure('');
+    handleClick();
     const respond = await signin(credits);
     if (respond[0] === undefined) return setFailure('Sorry, you entered wrong credits!');
     setFailure('');
     sessionStorage.setItem('current_user', JSON.stringify(respond[0]));
     return history.push('/home');
   };
+
+  if (failure) {
+    const btn = document.getElementById('login');
+    btn.disabled = false;
+    btn.style.backgroundColor = '#41b5e8';
+  }
   return (
     <div className="flex-col">
       <h1 className="v-bold">Login</h1>
@@ -52,7 +68,7 @@ const Login = () => {
           required
         />
 
-        <input type="submit" className="login active" value="LOGIN" />
+        <input type="submit" id="login" className="login active" value="LOGIN" />
       </form>
     </div>
   );
