@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import { useHistory } from 'react-router';
 import {
   faTape,
   faWeight,
@@ -12,7 +11,6 @@ import { fetchTrackedMovements } from '../../actions';
 
 const Profile = () => {
   const dispatch = useDispatch();
-  // const history = useHistory();
   const user = JSON.parse(sessionStorage.getItem('current_user'));
   const [updating, setUpdating] = useState(false);
   const [profile, setProfile] = useState({

@@ -1,14 +1,13 @@
-import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { render } from '@testing-library/react';
 import thunk from 'redux-thunk';
+import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Landing from '../containers/Landing';
+import Progress from '../containers/Progress';
 
 const mockStore = configureStore([thunk]);
 let store;
-
 beforeEach(() => {
   store = mockStore({
     user: {
@@ -92,30 +91,55 @@ beforeEach(() => {
       },
     },
   });
+  sessionStorage.setItem(
+    'current_user',
+    JSON.stringify({
+      id: 77,
+      name: 'samysamy',
+      birth_date: '2021-05-05',
+      password: 'samysamy',
+      created_at: '2021-05-21T01:06:57.478Z',
+      updated_at: '2021-05-21T01:42:36.306Z',
+      current_weight: 88,
+      last_weight: 78,
+      height: 178,
+    }),
+  );
 });
 
 const componentWrap = (component) => (
   <Provider store={store}>
-    <Router>{component}</Router>
+    <Router id={1}>{component}</Router>
   </Provider>
 );
 
-// Testing Landing commponent
-
-test('Render LOGIN button', () => {
-  const { getByText } = render(componentWrap(<Landing />));
-  const headerText = getByText(/LOGIN/);
+// Testing Progress commponent
+test('Render body mass index', () => {
+  const { getByText } = render(componentWrap(<Progress />));
+  const headerText = getByText(/27.77%/i);
   expect(headerText).toBeInTheDocument();
 });
 
-test('Render SIGNUP button', () => {
-  const { getByText } = render(componentWrap(<Landing />));
-  const headerText = getByText(/SIGN UP/);
+test('Render body built weight', () => {
+  const { getByText } = render(componentWrap(<Progress />));
+  const headerText = getByText(/Built weight/i);
   expect(headerText).toBeInTheDocument();
 });
 
-test('Render page title', () => {
-  const { getByText } = render(componentWrap(<Landing />));
-  const headerText = getByText(/WELCOME TO WORKOUT TRACK/);
+test('Render body weight to lose', () => {
+  const { getByText } = render(componentWrap(<Progress />));
+  const headerText = getByText(/Weight to lose/i);
+  expect(headerText).toBeInTheDocument();
+});
+
+test('Render body mass index list', () => {
+  const { getByText } = render(componentWrap(<Progress />));
+  const headerText = getByText(/Underweight/i);
+  expect(headerText).toBeInTheDocument();
+});
+
+test('Render tracked movements progress', () => {
+  const { getByText } = render(componentWrap(<Progress />));
+  const headerText = getByText(/your tracked movements progress/i);
   expect(headerText).toBeInTheDocument();
 });

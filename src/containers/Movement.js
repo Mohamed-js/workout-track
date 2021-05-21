@@ -14,7 +14,6 @@ const Showpage = () => {
   const [topScore, setTopScore] = useState();
   const dispatch = useDispatch();
   const user = JSON.parse(sessionStorage.getItem('current_user'));
-
   useEffect(() => {
     dispatch(fetchUserRecords(user.id));
     movementUserTopscore(user.id, id).then((data) => setTopScore(data));

@@ -1,14 +1,14 @@
-import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { render } from '@testing-library/react';
 import thunk from 'redux-thunk';
+import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Landing from '../containers/Landing';
+import userEvent from '@testing-library/user-event';
+import Profile from '../components/more/Profile';
 
 const mockStore = configureStore([thunk]);
 let store;
-
 beforeEach(() => {
   store = mockStore({
     user: {
@@ -92,6 +92,20 @@ beforeEach(() => {
       },
     },
   });
+  sessionStorage.setItem(
+    'current_user',
+    JSON.stringify({
+      id: 77,
+      name: 'samysamy',
+      birth_date: '2021-05-05',
+      password: 'samysamy',
+      created_at: '2021-05-21T01:06:57.478Z',
+      updated_at: '2021-05-21T01:42:36.306Z',
+      current_weight: 88,
+      last_weight: 78,
+      height: 178,
+    }),
+  );
 });
 
 const componentWrap = (component) => (
@@ -100,22 +114,54 @@ const componentWrap = (component) => (
   </Provider>
 );
 
-// Testing Landing commponent
+// Testing Profile commponent
 
-test('Render LOGIN button', () => {
-  const { getByText } = render(componentWrap(<Landing />));
-  const headerText = getByText(/LOGIN/);
+test('Render username', () => {
+  const { getByText } = render(componentWrap(<Profile />));
+  const headerText = getByText(/samysamy/i);
   expect(headerText).toBeInTheDocument();
 });
 
-test('Render SIGNUP button', () => {
-  const { getByText } = render(componentWrap(<Landing />));
-  const headerText = getByText(/SIGN UP/);
+test('Render update profile button', () => {
+  const { getByText } = render(componentWrap(<Profile />));
+  const headerText = getByText(/Update profile/i);
   expect(headerText).toBeInTheDocument();
 });
 
-test('Render page title', () => {
-  const { getByText } = render(componentWrap(<Landing />));
-  const headerText = getByText(/WELCOME TO WORKOUT TRACK/);
+test('Render save button after clicking the update button', () => {
+  const { getByText } = render(componentWrap(<Profile />));
+  const button = getByText(/Update/i);
+  userEvent.click(button);
+  const headerText = getByText(/save/i);
+  expect(headerText).toBeInTheDocument();
+});
+
+test('Render user weight label', () => {
+  const { getByText } = render(componentWrap(<Profile />));
+  const headerText = getByText(/weight/i);
+  expect(headerText).toBeInTheDocument();
+});
+
+test('Render the number of user weight', () => {
+  const { getByText } = render(componentWrap(<Profile />));
+  const headerText = getByText(/88/i);
+  expect(headerText).toBeInTheDocument();
+});
+
+test('Render user height label', () => {
+  const { getByText } = render(componentWrap(<Profile />));
+  const headerText = getByText(/height/i);
+  expect(headerText).toBeInTheDocument();
+});
+
+test('Render the number of user height', () => {
+  const { getByText } = render(componentWrap(<Profile />));
+  const headerText = getByText(/178/i);
+  expect(headerText).toBeInTheDocument();
+});
+
+test('Render the number of user height', () => {
+  const { getByAltText } = render(componentWrap(<Profile />));
+  const headerText = getByAltText(/Profile/i);
   expect(headerText).toBeInTheDocument();
 });

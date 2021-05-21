@@ -12,7 +12,6 @@ const ProgressItem = (props) => {
   if (text === 'BMI' && value > 30) {
     color = 'crimson';
   }
-
   if (text === 'BMI' && value === 'NaN') {
     color = 'crimson';
     val = 0;
