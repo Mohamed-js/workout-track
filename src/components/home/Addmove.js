@@ -7,8 +7,7 @@ import { newMovement } from '../../Helper';
 const Addmove = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
-  const s = useSelector((state) => state);
-  console.log(s);
+
   useEffect(() => {
     if (user) {
       dispatch(fetchUntrackedMovements(user.id));
