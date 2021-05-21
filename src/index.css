@@ -85,6 +85,19 @@ input {
   border: none;
 }
 
+.back {
+  padding-left: 10px;
+}
+
+.back svg {
+  color: white;
+}
+
+.green svg {
+  color: white;
+  margin-left: 5px;
+}
+
 button.nav-item svg {
   margin-bottom: 5px;
 }
@@ -113,19 +126,6 @@ button.nav-item svg {
 .header {
   position: absolute;
   left: calc(50% - 69px);
-}
-
-.back {
-  padding-left: 10px;
-}
-
-.back svg {
-  color: white;
-}
-
-.green svg {
-  color: white;
-  margin-left: 5px;
 }
 
 .grid {
@@ -248,6 +248,9 @@ button.nav-item svg {
   left: calc(50% - 100px);
   top: 40px;
   margin-bottom: 50px;
+  border-radius: 50%;
+  max-height: 150px;
+  max-width: 150px;
 }
 
 .rec {
@@ -261,7 +264,7 @@ button.nav-item svg {
   width: 100%;
   -webkit-appearance: none;
   height: 15px;
-  background: #ffffff;
+  background: #fff;
   outline: none;
   opacity: 0.7;
 }
@@ -362,12 +365,6 @@ input.login {
 
 .img-container-adjust img {
   width: 100px;
-}
-
-.circle {
-  border-radius: 50%;
-  max-height: 150px;
-  max-width: 150px;
 }
 
 .profile-grid-item {
