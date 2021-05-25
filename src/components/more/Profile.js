@@ -13,7 +13,6 @@ const Profile = () => {
     weight: userInfo.current_weight,
     height: userInfo.height,
   });
-  console.log(profile);
 
   useEffect(() => {
     userProfile(user.authentication_token).then((data) => {
