@@ -28,7 +28,7 @@ const Welcome = ({ user }) => {
           {' '}
         </Link>
         {' -  '}
-        to fill your profile...
+        to complete your profile...
         {' '}
       </h5>
     </div>

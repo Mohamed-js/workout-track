@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import {
-  faTape,
-  faWeight,
-} from '@fortawesome/free-solid-svg-icons';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { faTape, faWeight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import placeholder from '../../assets/placeholder.png';
-import { signin, updateProfile } from '../../Helper';
-import { fetchTrackedMovements } from '../../actions';
+import { updateProfile, userProfile } from '../../Helper';
 
 const Profile = () => {
-  const dispatch = useDispatch();
-  const user = JSON.parse(sessionStorage.getItem('current_user'));
+  const [userInfo, setUserInfo] = useState('');
   const [updating, setUpdating] = useState(false);
+  const user = useSelector((state) => state.user.user);
   const [profile, setProfile] = useState({
-    weight: user.current_weight,
-    height: user.height,
+    weight: userInfo.current_weight,
+    height: userInfo.height,
   });
+
+  useEffect(() => {
+    userProfile(user.authentication_token).then((data) => {
+      const userInfo = data;
+      setUserInfo(userInfo);
+    });
+  }, []);
 
   const handleClick = () => {
     setUpdating(true);
@@ -26,24 +29,15 @@ const Profile = () => {
     setProfile({ ...profile, [e.target.name]: e.target.value });
   };
 
-  const handleLogin = async () => {
-    const respond = await signin({
-      name: user.name,
-      password: user.password,
-    });
-    sessionStorage.setItem('current_user', JSON.stringify(respond[0]));
-  };
-
   const handleSubmit = () => {
+    const btn = document.getElementById('save');
+    btn.textContent = 'Please wait...';
     updateProfile(
-      user.id,
+      user.authentication_token,
       profile.weight,
       profile.height,
     ).then(() => {
-      handleLogin().then(() => {
-        dispatch(fetchTrackedMovements(user.id));
-        setUpdating(false);
-      });
+      setUpdating(false);
     });
   };
 
@@ -52,39 +46,53 @@ const Profile = () => {
       <div className="img-container m-auto active full-width center">
         <img className="circle" src={placeholder} alt="Profile" />
       </div>
-      <h3 className="m-0 container">{user.name.toUpperCase()}</h3>
-
-      {updating || (
-        <>
-          <button className="btn active" type="button" onClick={handleClick}>
-            Update profile
-          </button>
-          <div className="grid container">
-            <div className="profile-grid-item btn white-bg">
-              <FontAwesomeIcon icon={faWeight} className="grey" />
-              <h5 className="m-0 grey">Weight</h5>
-              <h4 className="grey">
-                {user.current_weight}
-                {' '}
-                kg
-              </h4>
-            </div>
-            <div className="profile-grid-item btn white-bg">
-              <FontAwesomeIcon icon={faTape} className="grey" />
-              <h5 className="m-0 grey">Height</h5>
-              <h4 className="grey">
-                {user.height}
-                {' '}
-                cm
-              </h4>
-            </div>
-          </div>
-        </>
-      )}
+      <>
+        {userInfo && (
+          <>
+            <h3 className="m-0 container">{userInfo.name.toUpperCase()}</h3>
+            {updating || (
+              <>
+                <button
+                  className="btn active"
+                  type="button"
+                  onClick={handleClick}
+                >
+                  Update profile
+                </button>
+                <div className="grid container">
+                  <div className="profile-grid-item btn white-bg">
+                    <FontAwesomeIcon icon={faWeight} className="grey" />
+                    <h5 className="m-0 grey">Weight</h5>
+                    <h4 className="grey">
+                      {userInfo.current_weight}
+                      {' '}
+                      kg
+                    </h4>
+                  </div>
+                  <div className="profile-grid-item btn white-bg">
+                    <FontAwesomeIcon icon={faTape} className="grey" />
+                    <h5 className="m-0 grey">Height</h5>
+                    <h4 className="grey">
+                      {userInfo.height}
+                      {' '}
+                      cm
+                    </h4>
+                  </div>
+                </div>
+              </>
+            )}
+          </>
+        )}
+      </>
 
       {updating && (
         <>
-          <button className="btn green" type="button" onClick={handleSubmit}>
+          <button
+            id="save"
+            className="btn green"
+            type="button"
+            onClick={handleSubmit}
+          >
             Save
           </button>
           <div className="grid container">
@@ -95,7 +103,7 @@ const Profile = () => {
                 type="number"
                 className="grey"
                 name="weight"
-                defaultValue={user.current_weight}
+                defaultValue={userInfo.current_weight}
                 onChange={handleChange}
               />
               kg
@@ -107,7 +115,7 @@ const Profile = () => {
                 type="number"
                 className="grey"
                 name="height"
-                defaultValue={user.height}
+                defaultValue={userInfo.height}
                 onChange={handleChange}
               />
               cm

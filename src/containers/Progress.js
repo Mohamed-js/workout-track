@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import ProgressChart from '../components/progress/Chart';
 import ProgressItem from '../components/progress/ProgressItem';
+import { userProfile } from '../Helper';
 
 const Progress = () => {
   const history = useHistory();
-  const user = JSON.parse(sessionStorage.getItem('current_user'));
-  if (user === null) {
+  const user = useSelector((state) => state.user.user);
+  const [userInfo, setUserInfo] = useState('');
+  useEffect(() => {
+    userProfile(user.authentication_token).then((data) => {
+      const userInfo = data;
+      setUserInfo(userInfo);
+    });
+  }, []);
+
+  if (userInfo === null) {
     history.push('/');
   }
   let weightLeftPercent;
@@ -17,17 +27,17 @@ const Progress = () => {
   let bestWeight;
   let weightLeft;
   let weightBuild;
-  if (user) {
-    heightSquare = (user.height / 100) ** 2;
+  if (userInfo) {
+    heightSquare = (userInfo.height / 100) ** 2;
     bestWeight = 23.5 * heightSquare;
-    weightLeft = user.current_weight - bestWeight;
-    weightLeftPercent = (weightLeft / user.current_weight) * 100;
-    bmi = user.current_weight / heightSquare;
+    weightLeft = userInfo.current_weight - bestWeight;
+    weightLeftPercent = (weightLeft / userInfo.current_weight) * 100;
+    bmi = userInfo.current_weight / heightSquare;
     weightBuild = (
-      ((user.current_weight - user.last_weight) / user.last_weight)
+      ((userInfo.current_weight - userInfo.last_weight) / userInfo.last_weight)
       * 100
     ).toFixed(2);
-    if (user.last_weight === 0) {
+    if (userInfo.last_weight === 0) {
       weightBuild = 0;
     }
 
@@ -37,7 +47,7 @@ const Progress = () => {
 
   return (
     <>
-      {user && (
+      {userInfo && (
         <div className="container">
           <div className="white-bg rounded full-width progress">
             <ProgressItem

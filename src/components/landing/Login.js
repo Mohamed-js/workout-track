@@ -31,9 +31,9 @@ const Login = () => {
     setFailure('');
     handleClick();
     const respond = await signin(credits);
-    if (respond[0] === undefined) return setFailure('Sorry, you entered wrong credits!');
+    if (respond && respond.failure) return setFailure(respond.failure);
     setFailure('');
-    sessionStorage.setItem('current_user', JSON.stringify(respond[0]));
+    sessionStorage.setItem('current_user', JSON.stringify(respond));
     return history.push('/home');
   };
 
@@ -68,7 +68,12 @@ const Login = () => {
           required
         />
 
-        <input type="submit" id="login" className="login active" value="LOGIN" />
+        <input
+          type="submit"
+          id="login"
+          className="login active"
+          value="LOGIN"
+        />
       </form>
     </div>
   );

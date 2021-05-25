@@ -8,7 +8,6 @@ const SignUp = () => {
   const [credits, setCredits] = useState({
     name: '',
     password: '',
-    birth_date: '',
   });
   const [success, setSuccess] = useState();
   const [failure, setFailure] = useState();
@@ -79,17 +78,6 @@ const SignUp = () => {
           placeholder="Password"
           required
         />
-        <label htmlFor="date" className="flex-col">
-          Date of birth:
-          <input
-            id="date"
-            onChange={handleChange}
-            type="date"
-            className="birth_date"
-            name="birth_date"
-            required
-          />
-        </label>
         <input
           type="submit"
           id="signup"

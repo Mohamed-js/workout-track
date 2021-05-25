@@ -4,7 +4,7 @@ export const signup = async (credits) => {
   const respond = await fetch(`${baseURL}/users`, {
     headers: { 'Content-Type': 'application/json' },
     method: 'post',
-    body: JSON.stringify(credits),
+    body: JSON.stringify({ user: credits }),
   })
     .then((res) => res.json())
     .then((data) => data);
@@ -66,7 +66,7 @@ export const movementUserTopscore = async (token, movementID) => {
 };
 
 export const updateProfile = async (token, Weight, Height) => {
-  const respond = await fetch(`${baseURL}/users/update`, {
+  const respond = await fetch(`${baseURL}/users/user`, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: token,
@@ -76,6 +76,18 @@ export const updateProfile = async (token, Weight, Height) => {
       weight: Weight,
       height: Height,
     }),
+  })
+    .then((res) => res.json())
+    .then((data) => data);
+  return respond;
+};
+
+export const userProfile = async (token) => {
+  const respond = await fetch(`${baseURL}/users/user`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: token,
+    },
   })
     .then((res) => res.json())
     .then((data) => data);

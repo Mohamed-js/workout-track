@@ -18,7 +18,7 @@ const NewSpecificRecord = () => {
 
   useEffect(() => {
     if (user) {
-      dispatch(fetchUserRecords(user.id));
+      dispatch(fetchUserRecords(user.authentication_token));
     }
   });
 
@@ -39,7 +39,7 @@ const NewSpecificRecord = () => {
     setCircle(false);
     setCount(document.getElementById('circle').value);
     document.getElementById('start').style.display = 'inline-block';
-    const message = await newRecord(user.id, exercise[0].id, count);
+    const message = await newRecord(user.authentication_token, exercise[0].id, count);
     setMessage(message);
   };
 

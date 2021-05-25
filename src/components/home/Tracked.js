@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 const Tracked = () => {
   const trackedMovements = useSelector((state) => state.user.trackedMovements);
   const records = useSelector((state) => state.user.records);
-
   let latest = 0;
   return (
     <div>

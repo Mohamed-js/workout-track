@@ -15,8 +15,8 @@ const Showpage = () => {
   const dispatch = useDispatch();
   const user = JSON.parse(sessionStorage.getItem('current_user'));
   useEffect(() => {
-    dispatch(fetchUserRecords(user.id));
-    movementUserTopscore(user.id, id).then((data) => setTopScore(data));
+    dispatch(fetchUserRecords(user.authentication_token));
+    movementUserTopscore(user.authentication_token, id).then((data) => setTopScore(data));
   }, []);
 
   const allrecords = useSelector((state) => state.user.records);
@@ -41,6 +41,7 @@ const Showpage = () => {
           {topScore && (
             <h3 className="grey bold">
               Top score:
+              {' '}
               {topScore.movement_count}
             </h3>
           )}
