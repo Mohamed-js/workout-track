@@ -9,20 +9,17 @@ const Profile = () => {
   const [userInfo, setUserInfo] = useState('');
   const [updating, setUpdating] = useState(false);
   const user = useSelector((state) => state.user.user);
-  const [profile, setProfile] = useState({
-    weight: userInfo.current_weight,
-    height: userInfo.height,
-  });
+  const [profile, setProfile] = useState('');
 
   useEffect(() => {
     userProfile(user.authentication_token).then((data) => {
       const userInfo = data;
       setUserInfo(userInfo);
-      setProfile({ ...profile, height: userInfo.height });
-      setProfile({ ...profile, weight: userInfo.current_weight });
+      setProfile({ ...profile, height: userInfo.height, weight: userInfo.current_weight });
     });
-  }, [user]);
+  }, [userProfile]);
 
+  console.log(userInfo);
   const handleClick = () => {
     setUpdating(true);
   };
@@ -40,6 +37,12 @@ const Profile = () => {
       profile.height,
     ).then(() => {
       setUpdating(false);
+    });
+    userProfile(user.authentication_token).then((data) => {
+      const userInfo = data;
+      setUserInfo(userInfo);
+      setProfile({ ...profile, height: userInfo.height });
+      setProfile({ ...profile, weight: userInfo.current_weight });
     });
   };
 
@@ -66,7 +69,7 @@ const Profile = () => {
                     <FontAwesomeIcon icon={faWeight} className="grey" />
                     <h5 className="m-0 grey">Weight</h5>
                     <h4 className="grey">
-                      {userInfo.current_weight}
+                      {profile.weight}
                       {' '}
                       kg
                     </h4>
@@ -75,7 +78,7 @@ const Profile = () => {
                     <FontAwesomeIcon icon={faTape} className="grey" />
                     <h5 className="m-0 grey">Height</h5>
                     <h4 className="grey">
-                      {userInfo.height}
+                      {profile.height}
                       {' '}
                       cm
                     </h4>
@@ -105,7 +108,7 @@ const Profile = () => {
                 type="number"
                 className="grey"
                 name="weight"
-                defaultValue={userInfo.current_weight}
+                defaultValue={profile.weight}
                 onChange={handleChange}
               />
               kg
@@ -117,7 +120,7 @@ const Profile = () => {
                 type="number"
                 className="grey"
                 name="height"
-                defaultValue={userInfo.height}
+                defaultValue={profile.height}
                 onChange={handleChange}
               />
               cm
