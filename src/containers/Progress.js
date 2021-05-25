@@ -10,10 +10,12 @@ const Progress = () => {
   const user = useSelector((state) => state.user.user);
   const [userInfo, setUserInfo] = useState('');
   useEffect(() => {
-    userProfile(user.authentication_token).then((data) => {
-      const userInfo = data;
-      setUserInfo(userInfo);
-    });
+    if (user) {
+      userProfile(user.authentication_token).then((data) => {
+        const userInfo = data;
+        setUserInfo(userInfo);
+      });
+    }
   }, []);
 
   if (userInfo === null) {

@@ -52,7 +52,7 @@ const NewSpecificRecord = () => {
       {message && message.message && (
         <h4 className="alert-good">{message.message}</h4>
       )}
-      <h3 className="grey text-center">{exercise[0].name.toUpperCase()}</h3>
+      {exercise && <h3 className="grey text-center">{exercise[0].name.toUpperCase()}</h3>}
       <div className="control-row">
         {circle && (
           <button

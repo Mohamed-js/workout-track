@@ -12,14 +12,15 @@ const Profile = () => {
   const [profile, setProfile] = useState('');
 
   useEffect(() => {
-    userProfile(user.authentication_token).then((data) => {
-      const userInfo = data;
-      setUserInfo(userInfo);
-      setProfile({ ...profile, height: userInfo.height, weight: userInfo.current_weight });
-    });
+    if (user) {
+      userProfile(user.authentication_token).then((data) => {
+        const userInfo = data;
+        setUserInfo(userInfo);
+        setProfile({ ...profile, height: userInfo.height, weight: userInfo.current_weight });
+      });
+    }
   }, [userProfile]);
 
-  console.log(userInfo);
   const handleClick = () => {
     setUpdating(true);
   };

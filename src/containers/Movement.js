@@ -20,8 +20,13 @@ const Showpage = () => {
   }, []);
 
   const allrecords = useSelector((state) => state.user.records);
-  const records = allrecords.filter((x) => `${x.movement_id}` === id);
-  const rec = records[0];
+  let records;
+  let rec;
+  if (allrecords) {
+    records = allrecords.filter((x) => `${x.movement_id}` === id);
+    // eslint-disable-next-line
+    rec = records[0];
+  }
 
   return (
     <>
