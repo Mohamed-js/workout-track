@@ -13,13 +13,16 @@ const Profile = () => {
     weight: userInfo.current_weight,
     height: userInfo.height,
   });
+  console.log(profile);
 
   useEffect(() => {
     userProfile(user.authentication_token).then((data) => {
       const userInfo = data;
       setUserInfo(userInfo);
+      setProfile({ ...profile, height: userInfo.height });
+      setProfile({ ...profile, weight: userInfo.current_weight });
     });
-  }, []);
+  }, [user]);
 
   const handleClick = () => {
     setUpdating(true);
