@@ -29,7 +29,7 @@ const SignUp = () => {
     handleClick();
     const respond = await signup(credits);
     setSuccess(respond.message);
-    setFailure(respond.name);
+    setFailure(respond);
   };
 
   if (failure) {
@@ -50,13 +50,8 @@ const SignUp = () => {
             <Link to="/login">Click here to login.</Link>
           </span>
         )}
-        {failure && (
-          <span className="alert-bad">
-            The name
-            {' '}
-            {failure}
-          </span>
-        )}
+        {failure
+          && failure.map((fail) => <span key={fail} className="alert-bad">{fail}</span>)}
       </div>
       <br />
       <form onSubmit={handleSubmit} className="flex-col">
