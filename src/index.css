@@ -469,3 +469,7 @@ input.login {
   font-size: 12px;
   margin-bottom: 3px;
 }
+
+.welcome-dialog h5 {
+  line-height: 30px;
+}

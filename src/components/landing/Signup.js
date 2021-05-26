@@ -26,10 +26,14 @@ const SignUp = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setFailure();
+    setSuccess();
     handleClick();
     const respond = await signup(credits);
     setSuccess(respond.message);
-    setFailure(respond);
+    if (!respond.message) {
+      setFailure(respond);
+    }
   };
 
   if (failure) {
