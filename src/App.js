@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Bottombar from './components/layout/Bottombar';
+import Addmove from './components/home/Addmove';
+import Login from './components/landing/Login';
+import SignUp from './components/landing/Signup';
+import More from './containers/More';
+import Navbar from './components/layout/Navbar';
+import NewRecord from './components/home/NewRecord';
+import Home from './containers/Home';
+import Landing from './containers/Landing';
+import Showpage from './containers/Movement';
+import Profile from './components/more/Profile';
+import NewSpecificRecord from './components/home/NewSpecificRecord';
+import Progress from './containers/Progress';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Navbar back="true" />
+        <Switch>
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/new" component={Addmove} />
+          <Route exact path="/show/:id" component={Showpage} />
+          <Route exact path="/new-record" component={NewRecord} />
+          <Route exact path="/new-record/:id" component={NewSpecificRecord} />
+          <Route exact path="/more" component={More} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/progress" component={Progress} />
+        </Switch>
+
+        <Bottombar />
+      </Router>
     </div>
   );
 }
