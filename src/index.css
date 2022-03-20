@@ -3,12 +3,15 @@
 * {
   box-sizing: border-box;
   font-family: 'Noto Sans JP', sans-serif;
-  font-weight: 500;
 }
 
 body {
   margin: 0;
   background-color: #f3f4f6;
+}
+
+.curved {
+  border-radius: 10px;
 }
 
 a {
@@ -37,6 +40,8 @@ input {
 
 .container {
   padding: 20px;
+  flex-grow: 1;
+  width: 100%;
 }
 
 .flex-row {
@@ -52,12 +57,21 @@ input {
   width: 100%;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .text-center {
   text-align: center;
 }
 
+.ReactChart {
+  max-width: 270px;
+  left: -25px;
+}
+
 .navbar {
-  padding: 10px;
+  padding: 5px;
   background-color: #41b5e8;
   color: white;
   position: sticky;
@@ -65,12 +79,10 @@ input {
 }
 
 .bottombar {
-  position: fixed;
   margin: 0;
   background-color: #323943;
   color: #b0b4b9;
   justify-content: space-around;
-  bottom: 0;
 }
 
 .nav-item {
@@ -78,7 +90,7 @@ input {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px 0;
+  padding: 12px 0;
   width: 25%;
   background-color: #323943;
   color: #b0b4b9;
@@ -472,4 +484,14 @@ input.login {
 
 .welcome-dialog h5 {
   line-height: 30px;
+}
+
+.mobile-view {
+  width: 360px;
+  height: 720px;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px rgba(173, 172, 172, 0.322) solid;
+  margin: 0 auto;
+  position: relative;
 }

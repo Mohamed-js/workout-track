@@ -10,7 +10,6 @@ const Home = () => {
   const dispatch = useDispatch();
   const [userInfo, setUserInfo] = useState('');
   const history = useHistory();
-  // sessionStorage.removeItem('current_user');
   const user = JSON.parse(sessionStorage.getItem('current_user'));
 
   if (!user) {
