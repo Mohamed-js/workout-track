@@ -43,7 +43,7 @@ const Login = () => {
     btn.style.backgroundColor = '#41b5e8';
   }
   return (
-    <div className="flex-col">
+    <div className="flex-col container">
       <h1 className="v-bold">Login</h1>
       <br />
       {failure && <span className="alert-bad">{failure}</span>}

@@ -42,7 +42,7 @@ const SignUp = () => {
     btn.style.backgroundColor = '#41b5e8';
   }
   return (
-    <>
+    <div className="container">
       <br />
       <h1 className="text-center ">SignUp</h1>
 
@@ -84,7 +84,7 @@ const SignUp = () => {
           value="SIGN UP"
         />
       </form>
-    </>
+    </div>
   );
 };
 

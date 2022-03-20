@@ -16,24 +16,27 @@ import Progress from './containers/Progress';
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Navbar back="true" />
-        <Switch>
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/new" component={Addmove} />
-          <Route exact path="/show/:id" component={Showpage} />
-          <Route exact path="/new-record" component={NewRecord} />
-          <Route exact path="/new-record/:id" component={NewSpecificRecord} />
-          <Route exact path="/more" component={More} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/progress" component={Progress} />
-        </Switch>
+      <h1 className="text-center">Workout Track!</h1>
+      <div className="mobile-view flex-col justify-between">
+        <Router>
+          <Navbar back="true" />
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/new" component={Addmove} />
+            <Route exact path="/show/:id" component={Showpage} />
+            <Route exact path="/new-record" component={NewRecord} />
+            <Route exact path="/new-record/:id" component={NewSpecificRecord} />
+            <Route exact path="/more" component={More} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/progress" component={Progress} />
+          </Switch>
 
-        <Bottombar />
-      </Router>
+          <Bottombar />
+        </Router>
+      </div>
     </div>
   );
 }

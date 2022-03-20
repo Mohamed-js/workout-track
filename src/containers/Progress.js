@@ -97,7 +97,7 @@ const Progress = () => {
           <h6 className="grey text-center m-0 mb">
             Your tracked movements progress
           </h6>
-          <div className="white-bg rounded full-width progress flex-col grey height">
+          <div className="white-bg rounded over-flow-hidden full-width progress flex-col grey height">
             <ProgressChart />
           </div>
           <br />

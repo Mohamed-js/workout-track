@@ -3,12 +3,16 @@
 * {
   box-sizing: border-box;
   font-family: 'Noto Sans JP', sans-serif;
-  font-weight: 500;
 }
 
 body {
   margin: 0;
   background-color: #f3f4f6;
+  overflow: hidden;
+}
+
+.curved {
+  border-radius: 10px;
 }
 
 a {
@@ -37,6 +41,18 @@ input {
 
 .container {
   padding: 20px;
+  flex-grow: 1;
+  width: 100%;
+  background: white;
+  overflow-y: scroll;
+}
+
+.p {
+  padding: 20px;
+}
+
+.p-0 {
+  padding: 0;
 }
 
 .flex-row {
@@ -52,12 +68,26 @@ input {
   width: 100%;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .text-center {
   text-align: center;
 }
 
+.ReactChart {
+  max-width: 270px;
+  left: -25px;
+  overflow: hidden;
+}
+
+.over-flow-hidden {
+  overflow: hidden;
+}
+
 .navbar {
-  padding: 10px;
+  padding: 5px;
   background-color: #41b5e8;
   color: white;
   position: sticky;
@@ -65,12 +95,10 @@ input {
 }
 
 .bottombar {
-  position: fixed;
   margin: 0;
   background-color: #323943;
   color: #b0b4b9;
   justify-content: space-around;
-  bottom: 0;
 }
 
 .nav-item {
@@ -78,7 +106,7 @@ input {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px 0;
+  padding: 12px 0;
   width: 25%;
   background-color: #323943;
   color: #b0b4b9;
@@ -139,7 +167,7 @@ button.nav-item svg {
   flex-direction: row;
   align-items: center;
   background-color: white;
-  height: 100%;
+  height: fit-content;
 }
 
 .grid-item h4 {
@@ -472,4 +500,35 @@ input.login {
 
 .welcome-dialog h5 {
   line-height: 30px;
+}
+
+.mobile-view {
+  width: 382px;
+  height: 743px;
+  border-radius: 25px;
+  overflow: hidden;
+  border: 1px rgba(173, 172, 172, 0.322) solid;
+  margin: 0 auto;
+  position: relative;
+  background: #282828;
+  padding: 20px;
+  padding-top: 45px;
+  box-shadow: white 0px 1px 10px inset;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #41a3e8;
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgb(0 74 255);
 }
