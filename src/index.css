@@ -3,11 +3,13 @@
 * {
   box-sizing: border-box;
   font-family: 'Noto Sans JP', sans-serif;
+  overflow-y: hidden;
 }
 
 body {
   margin: 0;
   background-color: #f3f4f6;
+  overflow: hidden;
 }
 
 .curved {
@@ -42,6 +44,16 @@ input {
   padding: 20px;
   flex-grow: 1;
   width: 100%;
+  background: white;
+  overflow-y: scroll;
+}
+
+.p {
+  padding: 20px;
+}
+
+.p-0 {
+  padding: 0;
 }
 
 .flex-row {
@@ -68,6 +80,11 @@ input {
 .ReactChart {
   max-width: 270px;
   left: -25px;
+  overflow: hidden;
+}
+
+.over-flow-hidden {
+  overflow: hidden;
 }
 
 .navbar {
@@ -151,7 +168,7 @@ button.nav-item svg {
   flex-direction: row;
   align-items: center;
   background-color: white;
-  height: 100%;
+  height: fit-content;
 }
 
 .grid-item h4 {
@@ -487,11 +504,32 @@ input.login {
 }
 
 .mobile-view {
-  width: 360px;
-  height: 720px;
-  border-radius: 15px;
+  width: 382px;
+  height: 743px;
+  border-radius: 25px;
   overflow: hidden;
   border: 1px rgba(173, 172, 172, 0.322) solid;
   margin: 0 auto;
   position: relative;
+  background: #282828;
+  padding: 20px;
+  padding-top: 45px;
+  box-shadow: white 0px 1px 10px inset;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #41a3e8;
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgb(0 74 255);
 }

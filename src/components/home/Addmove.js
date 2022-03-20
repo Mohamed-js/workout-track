@@ -26,7 +26,7 @@ const Addmove = () => {
 
   return (
     <>
-      <div className="grid">
+      <div className="grid container">
         {movements
           && movements.map((movement) => (
             <div key={movement.id} className="grid-item">
@@ -49,10 +49,6 @@ const Addmove = () => {
             </div>
           ))}
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
     </>
   );
 };

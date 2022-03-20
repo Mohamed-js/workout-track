@@ -48,14 +48,14 @@ const Profile = () => {
   };
 
   return (
-    <div className="text-center pt-0">
+    <div className="text-center p-0 container">
       <div className="img-container m-auto active full-width center">
         <img className="circle" src={placeholder} alt="Profile" />
       </div>
       <>
         {userInfo && (
           <>
-            <h3 className="m-0 container">{userInfo.name.toUpperCase()}</h3>
+            <h3 className="m-0 p">{userInfo.name.toUpperCase()}</h3>
             {updating || (
               <>
                 <button
@@ -65,7 +65,7 @@ const Profile = () => {
                 >
                   Update profile
                 </button>
-                <div className="grid container">
+                <div className="grid p">
                   <div className="profile-grid-item btn white-bg">
                     <FontAwesomeIcon icon={faWeight} className="grey" />
                     <h5 className="m-0 grey">Weight</h5>
@@ -101,7 +101,7 @@ const Profile = () => {
           >
             Save
           </button>
-          <div className="grid container">
+          <div className="grid p">
             <div className="profile-grid-item btn white-bg grey">
               <FontAwesomeIcon icon={faWeight} className="grey" />
               <h5 className="m-0 grey">Weight</h5>
