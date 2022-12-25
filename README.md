@@ -1,4 +1,4 @@
-# Workout Track - Microverse Final Assessment Project
+# Workout Track 
 
 > This project is a single-page mobile web app built mainly with React. It is a tool to track your workout and your body status and medical statistics. It's based on my Rails API; workout-track-api.herokuapp.com.
 
